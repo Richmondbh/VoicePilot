@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+backend/.env
+backend/voicepilot.db
+.pytest_cache/
+# Node
+frontend/node_modules/
+frontend/dist/
+# raw audio can get large; remove this line if you want to commit recordings
+data/raw/audio/*.webm
