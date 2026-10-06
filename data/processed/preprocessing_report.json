@@ -1,0 +1,28 @@
+{
+  "1_raw_rows": 230,
+  "1_raw_rows_by_source": {
+    "typed": 114,
+    "whisper_transcript": 64,
+    "paraphrase": 52
+  },
+  "2_after_removing_empty_noise": 222,
+  "3_unlabelled_dropped": 1,
+  "4_invalid_target_dropped": 2,
+  "5_duplicates_removed": 18,
+  "6_clean_rows": 201,
+  "6_rows_per_label": {
+    "OPEN_APP": 42,
+    "WEB_SEARCH": 32,
+    "OPEN_FOLDER": 25,
+    "SAVE_MEMORY": 24,
+    "CREATE_NOTE": 24,
+    "UNKNOWN": 20,
+    "RECALL_MEMORY": 18,
+    "SUMMARIZE_CLIPBOARD": 16
+  },
+  "7_split": {
+    "train": 140,
+    "val": 30,
+    "test": 31
+  }
+}

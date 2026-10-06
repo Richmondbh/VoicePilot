@@ -1,0 +1,231 @@
+id,source,collected_on,text,label,target
+1,typed,2026-10-02,Please launch Google Chrome.,Open_App,chrome
+2,paraphrase,2026-10-01,um look up weather in Östersund please,web search,weather in Östersund
+3,whisper_transcript,2026-10-04,Can you search what is a large language model?,WEB_SEARCH,what is a large language model
+4,typed,2026-10-01,turn off the lights,UNKNOWN,
+5,typed,2026-10-04,summarize the clipboard please,summarize,
+6,paraphrase,2026-10-01,send an email to my boss,other,
+7,whisper_transcript,2026-10-01,Look up Swedish grammar rules,web search,Swedish grammar rules
+8,typed,2026-10-05,find information about Mittuniversitetet library hours,WEB_SEARCH,Mittuniversitetet library hours
+9,typed,2026-10-04,,OPEN_APP,
+10,paraphrase,2026-10-01,sing a song,unknown,
+11,paraphrase,2026-10-02,give me a summary of what I just copied,summarize,
+12,typed,2026-10-02,open crome,OPEN_APP,chrome
+13,whisper_transcript,2026-10-04,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,my wifi router is in the hallway
+14,whisper_transcript,2026-10-01,Remember that my meeting is at ten.,SAVE_MEMORY,my meeting is at ten
+15,whisper_transcript,2026-10-03,remember my meeting is at ten,save memory,my meeting is at ten
+16,typed,2026-10-05,um look up FastAPI tutorials please,web search,FastAPI tutorials
+17,typed,2026-10-01,MAKE A NOTE: THE MEETING MOVED TO 3 PM,create note,the meeting moved to 3 pm
+18,typed,2026-10-03,when is the timetable meeting,Recall_Memory,
+19,paraphrase,2026-10-03,Launch Microsoft Edge,openapp,edge
+20,typed,2026-10-01,play the next episode,other,
+21,whisper_transcript,2026-10-01,Make a note: pay the electricity bill,note,pay the electricity bill
+22,whisper_transcript,2026-10-03,search the web for how to center a div,WEB_SEARCH,how to center a div
+23,typed,2026-10-02,Show the Downloads folder,open folder,downloads
+24,whisper_transcript,2026-10-03,what's my favourite editor,recall,
+25,paraphrase,2026-10-04,remember my favourite editor is VS Code,SAVE_MEMORY,my favourite editor is VS Code
+26,whisper_transcript,2026-10-04,Take me to Documents,OPEN_FOLDER,documents
+27,typed,2026-10-05,take a note that fix the login bug,CREATE_NOTE,fix the login bug
+28,typed,2026-10-03,Open my downloaded files.,folder,downloads
+29,typed,2026-10-04,Can you search pydantic models tutorial?,search,pydantic models tutorial
+30,typed,2026-10-03,Don't forget that my locker code is in the blue notebook,SAVE_MEMORY,my locker code is in the blue notebook
+31,whisper_transcript,2026-10-01,Did I tell you anything about class?,recall memory,
+32,whisper_transcript,2026-10-03,Save that the deadline for DA598A is next week,SAVE-MEMORY,the deadline for DA598A is next week
+33,whisper_transcript,2026-10-02,  clipboard summary please  ,clipboard,
+34,typed,2026-10-01,Make a note: the meeting moved to 3 pm,create note,the meeting moved to 3 pm
+35,typed,2026-10-02,Can you open docs?,OPEN_FOLDER,documents
+36,paraphrase,2026-10-03,search the web for SQLite vs Postgres,web search,SQLite vs Postgres
+37,typed,2026-10-05,  new note submit the project plan before Sunday  ,create note,submit the project plan before Sunday
+38,paraphrase,2026-10-01,keep in mind that the timetable meeting is on Thursday,save memory,the timetable meeting is on Thursday
+39,paraphrase,2026-10-02,  Create a note saying that buy milk and bread.  ,create note,buy milk and bread
+40,whisper_transcript,2026-10-04,Can you search Mittuniversitetet library hours?,WEB_SEARCH,Mittuniversitetet library hours
+41,whisper_transcript,2026-10-01,Don't forget that the timetable meeting is on Thursday,SAVE-MEMORY,the timetable meeting is on Thursday
+42,typed,2026-10-01,Look up vite react setup,WEB_SEARCH,vite react setup
+43,whisper_transcript,2026-10-04,Google pydantic models tutorial,WEB_SEARCH,pydantic models tutorial
+44,whisper_transcript,2026-10-03,LAUNCH VSCODE,open app,vscode
+45,typed,2026-10-04,What do you remember about my charger?,recall,
+46,paraphrase,2026-10-04,Go to my downloads,OPEN_FOLDER,downloads
+47,paraphrase,2026-10-01,Take me to pictures,OPEN_FOLDER,pictures
+48,paraphrase,2026-10-01,Can you summarise the text I copied?,summarize,
+49,paraphrase,2026-10-03,Make a note: buy milk and bread,create note,buy milk and bread
+50,whisper_transcript,2026-10-01,  Bring up Firefox  ,OPEN_APP,firefox
+51,typed,2026-10-01,Can you search train times Östersund to Stockholm?,WEB_SEARCH,train times Östersund to Stockholm
+52,paraphrase,2026-10-03,Fire up a text editor,openapp,notepad
+53,paraphrase,2026-10-01,Google React TypeScript microphone examples,web search,React TypeScript microphone examples
+54,whisper_transcript,2026-10-04,Please remember that I lent my charger to Erik,save memory,I lent my charger to Erik
+55,typed,2026-10-03,where did I park,recall,
+56,whisper_transcript,2026-10-03,Save that Anna's birthday is in March,SAVE-MEMORY,Anna's birthday is in March
+57,typed,2026-10-03,Don't forget that I parked on level 2,SAVE_MEMORY,I parked on level 2
+58,typed,2026-10-01,When is Anna's birthday?,RECALL_MEMORY,
+59,paraphrase,2026-10-02,new note read chapter 4 of the course book,CREATE_NOTE,read chapter 4 of the course book
+60,typed,2026-10-03,um open VSCode,openapp,vscode
+61,whisper_transcript,2026-10-05,Do you remember when the exam is?,recall,
+62,paraphrase,2026-10-02,take a note that practice the demo video,note,practice the demo video
+63,paraphrase,2026-10-04,Bring up vs coat,OPEN_APP,vscode
+64,typed,2026-10-04,remember my wifi router is in the hallway,remember,my wifi router is in the hallway
+65,typed,2026-10-01,I want to browse the internet,OPEN_APP,chrome
+66,typed,2026-10-04,Please remember that the exam is on the 14th,SAVE_MEMORY,the exam is on the 14th
+67,whisper_transcript,2026-10-05,Save that I parked on level 2,save memory,I parked on level 2
+68,typed,2026-10-03,Start Chrome please,OPEN_APP,chrome
+69,whisper_transcript,2026-10-01,who won the world cup,other,
+70,typed,2026-10-02,Launch Microsoft Excel,open app,excel
+71,whisper_transcript,2026-10-04,Can you search best laptops for students 2026?,web search,best laptops for students 2026
+72,paraphrase,2026-10-03,what is your name,unknown,
+73,paraphrase,2026-10-03,Delete all my files,UNKNOWN,
+74,paraphrase,2026-10-04,Open the browser.,open app,chrome
+75,typed,2026-10-03,Launch file explorer,openapp,explorer
+76,whisper_transcript,2026-10-05,new note submit the project plan before Sunday,create note,submit the project plan before Sunday
+77,whisper_transcript,2026-10-01,find information about python list comprehension,WEB_SEARCH,python list comprehension
+78,typed,2026-10-02,  um look up weather in Östersund please  ,web search,weather in Östersund
+79,typed,2026-10-02,Make a note: book the study room,create note,book the study room
+80,whisper_transcript,2026-10-05,Take me to my downloads,OPEN_FOLDER,downloads
+81,typed,2026-10-04,open photoshop,none,
+82,paraphrase,2026-10-04,open my web browser,OPEN_APP,chrome
+83,whisper_transcript,2026-10-02,open calculator,Open_App,calculator
+84,typed,2026-10-02,   ,note,
+85,typed,2026-10-02,Create a note saying that bring the laptop charger.,Create_Note,bring the laptop charger
+86,paraphrase,2026-10-05,Search Google for how to cook jollof rice.,WEB_SEARCH,how to cook jollof rice
+87,typed,2026-10-03,Could you open crome for me?,openapp,chrome
+88,typed,2026-10-03,jot down fix the login bug,create note,fix the login bug
+89,paraphrase,2026-10-05,shut down the computer,unknown,
+90,typed,2026-10-01,Open my web browser.,OPEN_APP,chrome
+91,whisper_transcript,2026-10-04,do you know when my presentation is,recall memory,
+92,whisper_transcript,2026-10-05,Save that the exam is on the 14th,SAVE_MEMORY,the exam is on the 14th
+93,typed,2026-10-04,what time is my meeting,RECALL_MEMORY,
+94,paraphrase,2026-10-03,book a flight to Accra,none,
+95,typed,2026-10-04,  show me my desktop  ,OPEN_FOLDER,desktop
+96,paraphrase,2026-10-05,um look up Swedish grammar rules please,WEB_SEARCH,Swedish grammar rules
+97,paraphrase,2026-10-02,Fire up calc,Open_App,calculator
+98,typed,2026-10-01,I need to code.,open_app,vscode
+99,paraphrase,2026-10-02,Could you open note pad for me?,OPEN_APP,notepad
+100,whisper_transcript,2026-10-04,Please launch calculater.,openapp,calculator
+101,whisper_transcript,2026-10-04,Search Google for SQLite vs Postgres.,WEB_SEARCH,SQLite vs Postgres
+102,paraphrase,2026-10-01,Bring up Firefox,OPEN_APP,firefox
+103,typed,2026-10-01,Make a note: email the teacher about the deadline,note,email the teacher about the deadline
+104,whisper_transcript,2026-10-04,[inaudible],WEB_SEARCH,
+105,whisper_transcript,2026-10-01,um remember that my project presentation is on Friday,remember,my project presentation is on Friday
+106,typed,2026-10-04,Go to my photos,folder,pictures
+107,whisper_transcript,2026-10-04,open chrome,,
+108,typed,2026-10-01,Can you open Documents?,OPEN_FOLDER,documents
+109,typed,2026-10-02,what was the deadline again,RECALL_MEMORY,
+110,typed,2026-10-05,Create a note I need to finish my report tomorrow,CREATE_NOTE,I need to finish my report tomorrow
+111,typed,2026-10-04,order a pizza,none,
+112,typed,2026-10-05,Fire up Visual Studio Code,OPEN_APP,vscode
+113,typed,2026-10-01,ok,UNKNOWN,
+114,typed,2026-10-02,What did I ask you to remember about Friday?,RECALL_MEMORY,
+115,typed,2026-10-03,Take me to desktop,folder,desktop
+116,typed,2026-10-03,uh show music folder,Open-Folder,music
+117,whisper_transcript,2026-10-01,  Search Google for how to cook jollof rice.  ,WEB_SEARCH,how to cook jollof rice
+118,typed,2026-10-01,open voicepilot notes folder please,Open-Folder,notes
+119,paraphrase,2026-10-05,  Take me to Documents  ,OPEN_FOLDER,documents
+120,typed,2026-10-04,restart my computer,unknown,
+121,paraphrase,2026-10-02,GOOGLE PYDANTIC MODELS TUTORIAL,WEB_SEARCH,pydantic models tutorial
+122,typed,2026-10-01,Can you start Chrome?,OPEN_APP,chrome
+123,paraphrase,2026-10-04,How are you today?,UNKNOWN,
+124,paraphrase,2026-10-03,I need spotify,openapp,spotify
+125,typed,2026-10-04,Save that I lent my charger to Erik,save memory,I lent my charger to Erik
+126,typed,2026-10-05,Search Google for football results today.,WEB_SEARCH,football results today
+127,typed,2026-10-01,i want to do some maths,OPEN_APP,calculator
+128,whisper_transcript,2026-10-03,um summarize my clipboard text,summarize,
+129,typed,2026-10-01,play some music,OPEN_APP,spotify
+130,typed,2026-10-04,Save that my project presentation is on Friday,remember,my project presentation is on Friday
+131,whisper_transcript,2026-10-01,Create a note saying that submit the project plan before Sunday.,create note,submit the project plan before Sunday
+132,paraphrase,2026-10-02,Search Google for React TypeScript microphone examples.,web search,React TypeScript microphone examples
+133,whisper_transcript,2026-10-03,Take me to downloaded files,OPEN_FOLDER,downloads
+134,typed,2026-10-04,search the web for weather in Östersund,search,weather in Östersund
+135,typed,2026-10-03,Can you search how to cook jollof rice?,web search,how to cook jollof rice
+136,whisper_transcript,2026-10-03,show me the download folder,Open-Folder,downloads
+137,whisper_transcript,2026-10-02,remind me what I told you about the router,recall memory,
+138,typed,2026-10-03,Could you open Visual Studio Code for me?,openapp,vscode
+139,typed,2026-10-02,When is my project presentation?,RECALL_MEMORY,
+140,whisper_transcript,2026-10-02,CAN YOU START WORD?,open app,word
+141,paraphrase,2026-10-02,What's the meaning of life?,UNKNOWN,
+142,typed,2026-10-04,show me my desktop,OPEN_FOLDER,desktop
+143,typed,2026-10-03,keep in mind that my locker code is in the blue notebook,SAVE-MEMORY,my locker code is in the blue notebook
+144,paraphrase,2026-10-01,Open VS Code.,OPEN_APP,vscode
+145,whisper_transcript,2026-10-05,sum up what I copied,summarize,
+146,typed,2026-10-02,Where is my locker code?,recall,
+147,whisper_transcript,2026-10-04,Create a note saying that buy milk and bread.,create note,buy milk and bread
+148,typed,2026-10-05,transfer money to Anna,other,
+149,typed,2026-10-04,hello,none,
+150,typed,2026-10-02,open Google Chrome,OPEN_APP,chrome
+151,typed,2026-10-05,write down pay the electricity bill,create note,pay the electricity bill
+152,typed,2026-10-04,um open Spotify,Open_App,spotify
+153,typed,2026-10-01,explain briefly what I copied,SUMMARIZE_CLIPBOARD,
+154,typed,2026-10-04,Open the code editor.,open app,vscode
+155,whisper_transcript,2026-10-03,  Can you summarise the text I copied?  ,summarize,
+156,typed,2026-10-01,What did I tell you earlier?,Recall_Memory,
+157,typed,2026-10-03,clipboard summary please,clipboard,
+158,typed,2026-10-02,tl;dr my clipboard,Summarize_Clipboard,
+159,whisper_transcript,2026-10-01,tell me what you remember,recall,
+160,paraphrase,2026-10-04,install Photoshop,UNKNOWN,
+161,paraphrase,2026-10-03,uh show home folder,folder,home
+162,whisper_transcript,2026-10-02,Launch VSCode,open app,vscode
+163,typed,2026-10-01,Short summary of the clipboard,SUMMARIZE_CLIPBOARD,
+164,typed,2026-10-03,Read my clipboard and summarize it,summarize,
+165,typed,2026-10-03,hey voicepilot open vs coat,OPEN_APP,vscode
+166,whisper_transcript,2026-10-01,find information about FastAPI tutorials,WEB_SEARCH,FastAPI tutorials
+167,typed,2026-10-04,Fire up the calculator,OPEN_APP,calculator
+168,paraphrase,2026-10-03,Search Google for Whisper speech recognition.,WEB_SEARCH,Whisper speech recognition
+169,whisper_transcript,2026-10-01,new note book the study room,Create_Note,book the study room
+170,typed,2026-10-04,um remember that my favourite editor is VS Code,save memory,my favourite editor is VS Code
+171,typed,2026-10-03,Tell me a joke,unknown,
+172,whisper_transcript,2026-10-02,Don't forget that Anna's birthday is in March,save memory,Anna's birthday is in March
+173,paraphrase,2026-10-03,I need explorer,Open_App,explorer
+174,whisper_transcript,2026-10-01,open,OPEN_APP,
+175,whisper_transcript,2026-10-02,Take me to videos,OPEN_FOLDER,videos
+176,whisper_transcript,2026-10-01,what does the copied text say in short,SUMMARIZE_CLIPBOARD,
+177,whisper_transcript,2026-10-01,new note call the dentist on Monday,CREATE_NOTE,call the dentist on Monday
+178,whisper_transcript,2026-10-01,I need Excel,Open_App,excel
+179,typed,2026-10-03,summarise clipboard,SUMMARIZE_CLIPBOARD,
+180,typed,2026-10-01,uh show Downloads,folder,downloads
+181,paraphrase,2026-10-03,um open VS Code,openapp,vscode
+182,paraphrase,2026-10-03,show me my notes,Open-Folder,notes
+183,typed,2026-10-03,show me my movies,Open-Folder,videos
+184,paraphrase,2026-10-03,hey voicepilot open calculator,openapp,calculator
+185,paraphrase,2026-10-01,open calculater,OPEN_APP,calculator
+186,typed,2026-10-01,uh show docs,folder,documents
+187,typed,2026-10-01,Open Notepad.,openapp,notepad
+188,whisper_transcript,2026-10-04,Could you open the code editor for me?,openapp,vscode
+189,whisper_transcript,2026-10-03,[background noise],,
+190,whisper_transcript,2026-10-04,Look up python list comprehension,web search,python list comprehension
+191,typed,2026-10-04,what did i say about the deadline,recall memory,
+192,typed,2026-10-01,remember I have class tomorrow,save memory,I have class tomorrow
+193,paraphrase,2026-10-02,Look up Whisper speech recognition,WEB_SEARCH,Whisper speech recognition
+194,typed,2026-10-03,Can you search vite react setup?,web search,vite react setup
+195,paraphrase,2026-10-04,thank you,none,
+196,paraphrase,2026-10-05,search for,WEB_SEARCH,
+197,typed,2026-10-05,jot down read chapter 4 of the course book,create note,read chapter 4 of the course book
+198,typed,2026-10-04,new note email the teacher about the deadline,note,email the teacher about the deadline
+199,typed,2026-10-02,um remember that the deadline for DA598A is next week,SAVE-MEMORY,the deadline for DA598A is next week
+200,whisper_transcript,2026-10-01,...,,
+201,typed,2026-10-04,hey voicepilot open the browser,openapp,chrome
+202,paraphrase,2026-10-02,TRANSFER MONEY TO KEZIAH,other,
+203,whisper_transcript,2026-10-01,condense what is on my clipboard,Summarize_Clipboard,
+204,typed,2026-10-03,Can you start the calculator?,openapp,calculator
+205,typed,2026-10-02,find information about best laptops for students 2026,search,best laptops for students 2026
+206,typed,2026-10-04,find information about train times Östersund to Stockholm,WEB_SEARCH,train times Östersund to Stockholm
+207,whisper_transcript,2026-10-04,Can you open the download folder?,folder,downloads
+208,typed,2026-10-02,take a note that call the dentist on Monday,note,call the dentist on Monday
+209,typed,2026-10-04,Look up how to center a div,WEB_SEARCH,how to center a div
+210,whisper_transcript,2026-10-05,take a note that I need to finish my report tomorrow,create note,I need to finish my report tomorrow
+211,typed,2026-10-05,Don't forget that I have class tomorrow,remember,I have class tomorrow
+212,typed,2026-10-03,jot down the meeting moved to 3 pm,note,the meeting moved to 3 pm
+213,paraphrase,2026-10-03,make a summary of the copied text,Summarize_Clipboard,
+214,paraphrase,2026-10-03,  um open Spotify  ,Open_App,spotify
+215,paraphrase,2026-10-03,Can you open my documents?,folder,documents
+216,typed,2026-10-04,Remember that ,SAVE_MEMORY,
+217,typed,2026-10-02,summarize my clipboard,Summarize_Clipboard,
+218,typed,2026-10-02,open edge,OPEN_APP,edge
+219,typed,2026-10-03,write down bring the laptop charger,create note,bring the laptop charger
+220,typed,2026-10-03,search for football results today,WEB_SEARCH,football results today
+221,typed,2026-10-04,hey voicepilot open calc,open app,calculator
+222,paraphrase,2026-10-02,format my hard drive,UNKNOWN,
+223,typed,2026-10-01,open my documents folder please,Open-Folder,documents
+224,whisper_transcript,2026-10-01,Create a note practice the demo video,note,practice the demo video
+225,typed,2026-10-01,Can you start Word?,open app,word
+226,whisper_transcript,2026-10-02,show me images folder,open folder,pictures
+227,whisper_transcript,2026-10-03,open Microsoft Word,openapp,word
+228,typed,2026-10-03,Search Google for what is a large language model.,web search,what is a large language model
+229,typed,2026-10-01,Summarize what is currently in my clipboard.,Summarize_Clipboard,
+230,typed,2026-10-02,what have I asked you to remember,recall memory,
