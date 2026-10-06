@@ -1,5 +1,5 @@
 # VoicePilot – AI-powered voice assistant for desktop task automation
-**DA598A Introduction to Generative AI – project work · Richmond Boakye**
+
 A voice assistant that turns spoken requests into controlled desktop actions. Built as project work for **DA598A Introduction to Generative AI** by Richmond Boakye.
 
 VoicePilot transcribes speech with faster-whisper, uses an LLM to interpret the request, then checks the proposed action against an allowlist before Python executes it.
