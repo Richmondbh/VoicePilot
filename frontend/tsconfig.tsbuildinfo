@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/components/actioncard.tsx","./src/components/conversationhistory.tsx","./src/components/datasetrecorder.tsx","./src/components/memorypanel.tsx","./src/components/statusindicator.tsx","./src/components/voicerecorder.tsx","./src/services/api.ts","./src/services/userecorder.ts","./src/types/index.ts"],"version":"5.9.3"}
