@@ -1,9 +1,10 @@
 {
-  "1_raw_rows": 230,
+  "1_raw_rows": 234,
   "1_raw_rows_by_source": {
     "typed": 114,
     "whisper_transcript": 64,
-    "paraphrase": 52
+    "paraphrase": 52,
+    "recording": 4
   },
   "2_after_removing_empty_noise": 222,
   "3_unlabelled_dropped": 1,
