@@ -1,5 +1,5 @@
 @echo off
-REM One-time setup for VoicePilot on Windows (needs Python 3.10+ and Node.js 18+)
+REM One-time setup for VoicePilot on Windows 
 cd /d %~dp0
 python -m venv .venv
 call .venv\Scripts\activate
