@@ -9,7 +9,7 @@ FastAPI references:
 - File uploads:     https://fastapi.tiangolo.com/tutorial/request-files/
 - CORS middleware:  https://fastapi.tiangolo.com/tutorial/cors/
 - Lifespan events:  https://fastapi.tiangolo.com/advanced/events/
-Run with:  uvicorn app.main:app --reload  
+One has to Run with:  uvicorn app.main:app --reload  
 """
 import csv
 import time
