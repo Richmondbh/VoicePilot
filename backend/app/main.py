@@ -9,7 +9,7 @@ FastAPI references:
 - File uploads:     https://fastapi.tiangolo.com/tutorial/request-files/
 - CORS middleware:  https://fastapi.tiangolo.com/tutorial/cors/
 - Lifespan events:  https://fastapi.tiangolo.com/advanced/events/
-Run with:  uvicorn app.main:app --reload   (from the backend folder)
+Run with:  uvicorn app.main:app --reload  
 """
 import csv
 import time
@@ -41,7 +41,7 @@ app.add_middleware(
 )
 
 
-# ================================================================ pipeline ==
+# ================================================================ pipeline ========
 def run_pipeline(text: str) -> CommandResponse:
     start = time.perf_counter()
     text = text.strip()

@@ -11,5 +11,5 @@ cd frontend
 call npm install
 cd ..
 echo.
-echo Setup finished. Edit backend\.env to choose your LLM, then run run_windows.bat
+echo Setup finished.
 pause

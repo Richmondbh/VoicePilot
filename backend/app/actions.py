@@ -3,7 +3,7 @@ Action validation + execution.
 
 SAFETY DESIGN: the LLM only *suggests* an intent and a target. This module
 decides whether that suggestion is allowed. Applications and folders must be
-on an allowlist, and we never run a command string produced by the model.
+on an allowlist, and i never run a command string produced by the model.
 
 References:
 - subprocess:  https://docs.python.org/3/library/subprocess.html
