@@ -1,17 +1,4 @@
-"""
-Compare intent-recognition approaches on the held-out test split:
-  rules       keyword rules (no ML)
-  classifier  TF-IDF + Logistic Regression (scripts/train_classifier.py)
-  llm-v1/v2/v3  the three prompt versions in backend/app/assistant.py
 
-Metrics: intent accuracy, target accuracy (apps/folders, exact canonical
-match), and how often the LLM returned valid JSON.
-
-Run from the project root (the LLM settings come from backend/.env):
-    python scripts/evaluate_prompts.py               # test split
-    python scripts/evaluate_prompts.py --split all   # every clean sample
-    python scripts/evaluate_prompts.py --skip-llm    # only rules + classifier
-"""
 import argparse
 import sys
 import time

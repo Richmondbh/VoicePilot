@@ -1,14 +1,6 @@
 """
-Train a small intent classifier on the processed dataset.
-
-Feature encoding: TF-IDF (word uni/bi-grams + character n-grams, which helps with
-speech-recognition typos like "crome"). Model: Logistic Regression.
-It is used (a) as the offline fallback in the app and (b) as a baseline to
-compare against the LLM prompts.
-
 Based on: https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
           https://scikit-learn.org/stable/modules/compose.html#featureunion-composite-feature-spaces
-Run from the project root:  python scripts/train_classifier.py
 """
 from pathlib import Path
 

@@ -1,17 +1,4 @@
 """
-Raw voice-command data -> clean, labelled, split dataset.
-
-Inputs  (data/raw/):
-  commands_raw.csv       typed / paraphrased / previously transcribed commands
-  recorded_commands.csv  voice recordings collected in the app ("Dataset" tab);
-                         these have NO text yet -> they are transcribed with Whisper here
-Outputs (data/processed/):
-  dataset_clean.csv, train.csv, val.csv, test.csv, preprocessing_report.json
-
-Steps: transcribe audio -> drop empty/noise rows -> normalise text ->
-       normalise labels -> validate targets -> remove duplicates -> stratified split
-
-Run from the project root:  python scripts/preprocess.py
 pandas docs: https://pandas.pydata.org/docs/user_guide/10min.html
 train_test_split: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 """
