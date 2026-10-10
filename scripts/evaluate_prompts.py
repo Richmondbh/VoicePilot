@@ -76,7 +76,7 @@ def main():
 
     methods = ["rules", "classifier"]
     if not args.skip_llm and config.LLM_PROVIDER != "none":
-        methods += ["llm-v1", "llm-v2", "llm-v3"]
+        methods += ["llm-v1", "llm-v2", "llm-v3", "llm-v4"]
     elif not args.skip_llm:
         print("LLM_PROVIDER=none -> skipping LLM prompts (set it in backend/.env)")
 
