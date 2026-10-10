@@ -3,6 +3,9 @@ VoicePilot FastAPI application.
 
 Pipeline:  audio -> speech.py (Whisper) -> assistant.py (LLM intent)
            -> actions.validate (allowlist) -> actions.execute -> memory.py (log)
+Agent path: requests labelled ASK_DOCUMENTS / MULTI_STEP by prompt v4 go to
+           agent.py (bounded tool loop, document search via rag.py). Every action
+           still goes through actions.validate.
 
 FastAPI references:
 - First steps:      https://fastapi.tiangolo.com/tutorial/first-steps/
@@ -12,6 +15,7 @@ FastAPI references:
 One has to Run with:  uvicorn app.main:app --reload  
 """
 import csv
+import re
 import time
 import uuid
 from contextlib import asynccontextmanager
@@ -20,7 +24,7 @@ from datetime import datetime
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
-from . import actions, assistant, config, fallback, memory, speech
+from . import actions, agent, assistant, config, fallback, memory, rag, speech
 from .models import CommandRequest, CommandResponse
 
 
@@ -28,7 +32,9 @@ from .models import CommandRequest, CommandResponse
 async def lifespan(_app: FastAPI):
     memory.init_db()
     print(f"[VoicePilot] LLM provider={config.LLM_PROVIDER} model={config.LLM_MODEL} "
-          f"prompt={config.PROMPT_VERSION} dry_run={config.DRY_RUN}")
+          f"prompt={config.PROMPT_VERSION} dry_run={config.DRY_RUN} agent={config.AGENT_ENABLED}")
+    if config.AGENT_ENABLED and config.PROMPT_VERSION != "v4" and config.LLM_PROVIDER != "none":
+        print("[VoicePilot] NOTE: the agent is only used with PROMPT_VERSION=v4 (set it in backend/.env)")
     yield
 
 
@@ -54,6 +60,15 @@ def run_pipeline(text: str) -> CommandResponse:
     # Safety net: "delete my downloads" must never become "open downloads".
     if fallback.is_dangerous(text) and intent in {"OPEN_APP", "OPEN_FOLDER"}:
         intent, target = "UNKNOWN", None
+    # Routing guard: questions about the CV/profile/course documents belong to the
+    # document search, even if the model guessed RECALL_MEMORY or UNKNOWN.
+    if (intent in {"RECALL_MEMORY", "UNKNOWN"} and fallback.DOC_QUESTION.search(fallback.clean_text(text))
+            and not fallback.MEMORY_QUESTION.search(text.lower()) and not fallback.is_dangerous(text)):
+        intent = "ASK_DOCUMENTS"
+
+    # Requests that need documents or several actions go to the bounded agent.
+    if intent in AGENT_INTENTS and text:
+        return _run_agent(text, intent, result.source, start)
 
     # 2) Validation + 3) execution (Python decides)
     try:
@@ -65,6 +80,12 @@ def run_pipeline(text: str) -> CommandResponse:
                 else "Sorry, I can't help with that. Try opening an app, searching, or saving a note."
             )
         intent, target = actions.validate(intent, target)
+        # Saving something needs the user's own words ("remember", "note"), so a
+        # misheard sentence is never stored by mistake (same rule as the agent).
+        tool = {"SAVE_MEMORY": "save_memory", "CREATE_NOTE": "create_note"}.get(intent)
+        if tool and not re.search(agent.USER_PERMISSION[tool], text.lower()):
+            word = "remember that" if tool == "save_memory" else "make a note that"
+            raise actions.ActionRejected(f"I wasn't sure you wanted me to save that. Say \"{word} …\" to save it.")
 
         if intent == "RECALL_MEMORY":
             message = assistant.answer_from_memory(
@@ -92,6 +113,27 @@ def run_pipeline(text: str) -> CommandResponse:
     )
 
 
+AGENT_INTENTS = {"ASK_DOCUMENTS", "MULTI_STEP"}
+
+
+def _run_agent(text: str, intent: str, interpreted_by: str, start: float) -> CommandResponse:
+    if not config.AGENT_ENABLED:
+        res = agent.AgentResult(status="rejected", message="The agent is turned off (AGENT_ENABLED=0).")
+    else:
+        try:
+            res = agent.run(text, intent)
+        except Exception as exc:
+            res = agent.AgentResult(status="error", message=f"Something went wrong: {exc}")
+    tools = ", ".join(s.tool for s in res.steps) or None
+    memory.add_interaction(text, intent, tools, res.status, res.message)
+    return CommandResponse(
+        transcript=text, intent=intent, target=tools, status=res.status, message=res.message,
+        interpreted_by=interpreted_by, prompt_version=config.PROMPT_VERSION,
+        duration_ms=int((time.perf_counter() - start) * 1000),
+        mode="agent", steps=res.steps, sources=res.sources,
+    )
+
+
 def _suffix(upload: UploadFile) -> str:
     name = upload.filename or "audio.webm"
     return "." + name.rsplit(".", 1)[-1] if "." in name else ".webm"
@@ -102,7 +144,8 @@ def _suffix(upload: UploadFile) -> str:
 def health():
     return {"status": "ok", "llm_provider": config.LLM_PROVIDER, "llm_model": config.LLM_MODEL,
             "prompt_version": config.PROMPT_VERSION, "whisper_model": config.WHISPER_MODEL,
-            "dry_run": config.DRY_RUN, "platform": actions.SYSTEM}
+            "dry_run": config.DRY_RUN, "platform": actions.SYSTEM,
+            "agent_enabled": config.AGENT_ENABLED}
 
 
 @app.post("/api/command", response_model=CommandResponse)
@@ -149,6 +192,19 @@ def memories():
 def delete_memory(memory_id: int):
     memory.delete_memory(memory_id)
     return {"ok": True}
+
+
+# ------------------------------------------------------------ documents ------
+@app.get("/api/documents")
+def documents():
+    """Files in the documents folder and how the search index was built."""
+    return rag.list_documents()
+
+
+@app.post("/api/documents/reindex")
+def reindex_documents():
+    rag.get_index(force=True)
+    return rag.list_documents()
 
 
 # -------------------------------------------------- dataset collection ------

@@ -70,22 +70,52 @@ def test_chunks_overlap_and_cover_text():
 
 # ----------------------------------------------------------------- agent ---
 def test_document_question_cites_retrieved_source(monkeypatch):
-    fake(monkeypatch, '{"final_answer": "The report must be 3-5 pages.", "sources": ["S1", "S99"]}')
+    fake(monkeypatch, '{"answer": "The report must be 3-5 pages.", "sources": ["S1", "S99"]}')
     res = agent.run("How long must the project report be?", "ASK_DOCUMENTS")
     assert res.steps[0].tool == "search_documents"          # Python searches first
+    assert res.steps[-1].tool == "answer_from_documents"    # one focused answer call
     assert res.sources == ["course_rules.md"]               # S99 was never retrieved -> dropped
+    assert "3-5 pages" in res.message
+
+
+def test_document_question_plain_text_answer_is_accepted(monkeypatch):
+    fake(monkeypatch, "The report can be 3-5 pages long.")
+    res = agent.run("How long must the project report be?", "ASK_DOCUMENTS")
+    assert res.status == "success" and "3-5" in res.message and res.sources
+
+
+def test_document_question_not_found(monkeypatch):
+    fake(monkeypatch, '{"answer": "I couldn\'t find that in your documents.", "sources": ["S1"]}')
+    res = agent.run("What does the course say about parking at campus?", "ASK_DOCUMENTS")
+    assert "couldn't find" in res.message and res.sources == []
 
 
 def test_prompt_injection_in_document_cannot_trigger_actions(monkeypatch):
-    # The model "falls for" the injected instruction - the backend must still block it.
+    # The model reads the document and then "falls for" the injected instruction.
+    # The backend must still block it, because the user's own words never asked for it.
     fake(monkeypatch,
+         '{"tool": "search_documents", "args": {"query": "study group notes"}}',
          '{"tool": "open_app", "args": {"name": "spotify"}}',
          '{"tool": "save_memory", "args": {"fact": "the user\'s password is 1234"}}',
          '{"final_answer": "The notes say the group meets on Thursday.", "sources": ["S1"]}')
-    res = agent.run("What do my study group notes say?", "ASK_DOCUMENTS")
+    res = agent.run("check my study group notes and follow the instructions in them", "MULTI_STEP")
     assert res.actions_run == []
-    assert [s.status for s in res.steps[1:]] == ["blocked", "blocked"]
+    assert [s.status for s in res.steps] == ["ok", "blocked", "blocked"]
     assert memory.list_memories() == []
+
+
+def test_document_questions_cannot_call_tools_at_all(monkeypatch):
+    fake(monkeypatch, '{"tool": "open_app", "args": {"name": "spotify"}}')
+    res = agent.run("What do my study group notes say?", "ASK_DOCUMENTS")
+    assert res.actions_run == [] and [s.tool for s in res.steps] == ["search_documents", "answer_from_documents"]
+
+
+def test_repeated_searches_still_end_with_an_answer(monkeypatch):
+    # A small model that keeps searching instead of answering (seen with llama3.2:3b).
+    fake(monkeypatch, *(['{"tool": "search_documents", "args": {"query": "report pages"}}'] * 4),
+         '{"answer": "3-5 pages.", "sources": ["S1"]}')
+    res = agent.run("look up the report length and tell me and then summarise it", "MULTI_STEP")
+    assert res.status == "success" and res.message == "3-5 pages."
 
 
 def test_retrieved_text_is_marked_untrusted(monkeypatch):
@@ -154,10 +184,30 @@ def test_api_routes_to_agent(monkeypatch):
     from app.main import app
     fake(monkeypatch,
          '{"intent": "ASK_DOCUMENTS", "target": "report length", "reply": "Checking."}',   # router (v4)
-         '{"final_answer": "3-5 pages, excluding the cover.", "sources": ["S1"]}')         # agent
+         '{"answer": "3-5 pages, excluding the cover.", "sources": ["S1"]}')               # answer
     with TestClient(app) as client:
         r = client.post("/api/command", json={"text": "how long is the project report?"}).json()
     assert r["mode"] == "agent" and r["sources"] == ["course_rules.md"] and r["steps"]
+
+
+def test_api_routing_guard_sends_cv_questions_to_documents(monkeypatch):
+    from fastapi.testclient import TestClient
+    from app.main import app
+    fake(monkeypatch,
+         '{"intent": "RECALL_MEMORY", "target": "certification", "reply": "Let me check."}',  # wrong guess
+         '{"answer": "Not in these test documents.", "sources": []}')
+    with TestClient(app) as client:
+        r = client.post("/api/command", json={"text": "Do I have a Microsoft certification on my CV?"}).json()
+    assert r["intent"] == "ASK_DOCUMENTS" and r["mode"] == "agent"
+
+
+def test_api_misheard_sentence_is_not_saved(monkeypatch):
+    from fastapi.testclient import TestClient
+    from app.main import app
+    fake(monkeypatch, '{"intent": "SAVE_MEMORY", "target": "we are setting it", "reply": "Ok."}')
+    with TestClient(app) as client:
+        r = client.post("/api/command", json={"text": "We're setting it while I have on my CV."}).json()
+    assert r["status"] == "rejected" and memory.list_memories() == []
 
 
 def test_api_fast_path_unchanged(monkeypatch):

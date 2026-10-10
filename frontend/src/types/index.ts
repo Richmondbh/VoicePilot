@@ -1,5 +1,22 @@
 // Shapes returned by the FastAPI backend (see backend/app/models.py)
 
+export interface AgentStep {
+  step: number
+  tool: string
+  args: Record<string, unknown>
+  status: 'ok' | 'blocked' | 'error'
+  result: string
+  thought: string | null
+}
+
+export interface DocumentsInfo {
+  folder: string
+  backend: 'ollama' | 'tfidf'
+  model: string
+  chunks: number
+  files: { path: string; chunks: number }[]
+}
+
 export interface CommandResponse {
   transcript: string
   intent: string
@@ -9,6 +26,9 @@ export interface CommandResponse {
   interpreted_by: string
   prompt_version: string
   duration_ms: number
+  mode: 'single' | 'agent'
+  steps: AgentStep[]
+  sources: string[]
 }
 
 export interface Interaction {
@@ -35,6 +55,7 @@ export interface Health {
   whisper_model: string
   dry_run: boolean
   platform: string
+  agent_enabled?: boolean
 }
 
 export const INTENTS = [

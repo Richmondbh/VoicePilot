@@ -1,4 +1,5 @@
 import type { CommandResponse } from '../types'
+import AgentTrace from './AgentTrace'
 
 const STATUS_ICON = { success: '✓', rejected: '!', error: '×' }
 const EXAMPLES = [
@@ -9,6 +10,8 @@ const EXAMPLES = [
   'Remember that my presentation is Friday',
   'What did I ask you to remember?',
   'Summarize my clipboard',
+  'What certification is listed in my CV?',
+  'Search for FastAPI tutorials and make a note to watch them tonight',
 ]
 
 /** Displays the transcript, interpreted intent and execution result. */
@@ -35,13 +38,17 @@ export default function ActionCard({ result }: { result: CommandResponse | null 
         <span className="step-label">VoicePilot understood</span>
         <div className="chips">
           <span className="chip chip--intent">{result.intent}</span>
-          {result.target && <span className="chip">{result.target}</span>}
+          {result.target && result.mode !== 'agent' && <span className="chip">{result.target}</span>}
           <span className="chip chip--muted">
+            {result.mode === 'agent' ? 'Agent · ' : ''}
             {result.interpreted_by === 'llm' ? `LLM · prompt ${result.prompt_version}` : result.interpreted_by}
             {' · '}{result.duration_ms} ms
           </span>
         </div>
       </div>
+      {result.mode === 'agent' && result.steps.length > 0 && (
+        <AgentTrace steps={result.steps} sources={result.sources} />
+      )}
       <div className={`step status--${result.status}`}>
         <span className="step-label">Result</span>
         <p className="message">

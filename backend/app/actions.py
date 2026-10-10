@@ -118,6 +118,8 @@ def validate(intent: str, target: str | None) -> tuple[str, str | None]:
     if intent == "OPEN_APP":
         app = normalize_app(target)
         if not app:
+            if not target:
+                raise ActionRejected("I think you want to open an app, but I didn't catch which one.")
             allowed = ", ".join(sorted(APP_COMMANDS))
             raise ActionRejected(f"'{target}' is not on my list of allowed apps ({allowed}).")
         return intent, app
@@ -125,6 +127,8 @@ def validate(intent: str, target: str | None) -> tuple[str, str | None]:
     if intent == "OPEN_FOLDER":
         folder = normalize_folder(target)
         if not folder:
+            if not target:
+                raise ActionRejected("I think you want to open a folder, but I didn't catch which one.")
             allowed = ", ".join(sorted(FOLDERS))
             raise ActionRejected(f"'{target}' is not an allowed folder ({allowed}).")
         return intent, folder
@@ -169,7 +173,7 @@ def open_folder(folder: str) -> str:
         path.mkdir(parents=True, exist_ok=True)
     else:
         path = Path.home() / FOLDERS[folder]
-    if not path.exists():
+    if not path.exists() and not config.DRY_RUN:
         raise ActionRejected(f"The folder {path} does not exist on this computer.")
     _open_path(path)
     return f"Opening your {folder} folder."

@@ -17,6 +17,8 @@ class Intent(str, Enum):
     RECALL_MEMORY = "RECALL_MEMORY"
     SUMMARIZE_CLIPBOARD = "SUMMARIZE_CLIPBOARD"
     UNKNOWN = "UNKNOWN"
+    ASK_DOCUMENTS = "ASK_DOCUMENTS"  # -> agent
+    MULTI_STEP = "MULTI_STEP"        # -> agent
 
 
 class IntentResult(BaseModel):
@@ -25,6 +27,16 @@ class IntentResult(BaseModel):
     target: Optional[str] = None
     reply: Optional[str] = None      # short natural-language confirmation
     source: str = "llm"              # "llm" | "classifier" | "rules"
+
+
+class AgentStep(BaseModel):
+    """One tool call made by the agent (shown as a trace in the UI)."""
+    step: int
+    tool: str
+    args: dict = {}
+    status: str                      # "ok" | "blocked" | "error"
+    result: str                      # short preview of what the tool returned
+    thought: Optional[str] = None
 
 
 class CommandRequest(BaseModel):
@@ -40,3 +52,6 @@ class CommandResponse(BaseModel):
     interpreted_by: str              # llm / classifier / rules
     prompt_version: str
     duration_ms: int
+    mode: str = "single"             # "single" (fast path) | "agent"
+    steps: list[AgentStep] = []      # agent trace
+    sources: list[str] = []          # documents the answer is based on

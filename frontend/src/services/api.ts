@@ -1,6 +1,6 @@
 // Small wrapper around the Fetch API.
 // Fetch + FormData reference: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-import type { CommandResponse, Health, Interaction, Memory } from '../types'
+import type { CommandResponse, DocumentsInfo, Health, Interaction, Memory } from '../types'
 
 async function request<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, init)
@@ -45,5 +45,7 @@ export const api = {
     form.append('prompt_text', promptText)
     return request<{ ok: boolean; id: string }>('/api/dataset/sample', { method: 'POST', body: form })
   },
+  documents: () => request<DocumentsInfo>('/api/documents'),
+  reindexDocuments: () => request<DocumentsInfo>('/api/documents/reindex', { method: 'POST' }),
   sampleCount: () => request<{ count: number }>('/api/dataset/count'),
 }

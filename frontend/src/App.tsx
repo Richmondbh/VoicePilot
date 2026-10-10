@@ -2,11 +2,12 @@ import { useCallback, useEffect, useState } from 'react'
 import ActionCard from './components/ActionCard'
 import ConversationHistory from './components/ConversationHistory'
 import DatasetRecorder from './components/DatasetRecorder'
+import DocumentsPanel from './components/DocumentsPanel'
 import MemoryPanel from './components/MemoryPanel'
 import StatusIndicator from './components/StatusIndicator'
 import VoiceRecorder from './components/VoiceRecorder'
 import { api } from './services/api'
-import type { CommandResponse, Health, Interaction, Memory } from './types'
+import type { CommandResponse, DocumentsInfo, Health, Interaction, Memory } from './types'
 
 function speak(text: string) {
   if (!('speechSynthesis' in window)) return
@@ -23,6 +24,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null)
   const [history, setHistory] = useState<Interaction[]>([])
   const [memories, setMemories] = useState<Memory[]>([])
+  const [documents, setDocuments] = useState<DocumentsInfo | null>(null)
   const [tts, setTts] = useState(false)
 
   const refresh = useCallback(async () => {
@@ -43,6 +45,7 @@ export default function App() {
 
   useEffect(() => {
     void refresh()
+    api.documents().then(setDocuments).catch(() => setDocuments(null))
   }, [refresh])
 
   async function run(command: () => Promise<CommandResponse>) {
@@ -144,6 +147,10 @@ export default function App() {
             <ActionCard result={result} />
           </div>
           <aside className="side-column" aria-label="Assistant information">
+            <DocumentsPanel
+              info={documents}
+              onReindex={async () => setDocuments(await api.reindexDocuments())}
+            />
             <MemoryPanel
               memories={memories}
               onDelete={async (id) => {
