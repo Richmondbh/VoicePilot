@@ -22,6 +22,8 @@ VoicePilot transcribes speech with faster-whisper, uses an LLM to interpret the 
 - View conversation history and optionally hear spoken replies.
 - Record labelled voice commands for the project dataset.
 - Fall back to local classifier and keyword rules if the LLM is unavailable.
+- **Agent mode:** requests that need several steps ("search for X and make a note") or your documents ("what certification is in my CV?") are handled by a bounded agent that calls tools one at a time.
+- **Document search (RAG):** read-only search over the files in `documents/`, with the source file and page shown for each answer.
 
 The LLM can suggest an intent, but it cannot run commands directly. The Python backend validates each action against an allowlist. Unsupported requests are rejected.
 
@@ -153,9 +155,57 @@ Current numbers with the seed data (`preprocessing_report.json`): **230 raw rows
 * **v2** – adds a role, a definition for every intent, rules for the target, the allowed apps/folders, "JSON only", and a note that speech recognition makes mistakes.
 * **v3** – v2 plus **few-shot examples**, **saved memories**, the **last 5 conversation turns** (so "open it again" works), an explicit rule for questions vs statements, safety rules for UNKNOWN, and a short spoken `reply`.
 
-`PROMPT_VERSION` in `.env` picks the version the app uses. The evaluation script compares all three.
+* **v4** – v3 plus two routing intents (`ASK_DOCUMENTS`, `MULTI_STEP`) and examples for them, which hand requests to the agent (section 3b).
+
+`PROMPT_VERSION` in `.env` picks the version the app uses. `evaluate_prompts.py` compares all four on the same test split. v4 is included to check that adding the routing intents doesn't make the original intents worse.
 
 ---
+
+## 3b. Agent mode and document search
+
+Simple commands still use the fast single-step path above. Prompt **v4** adds two routing intents:
+
+| Intent | Example | Handled by |
+|---|---|---|
+| `ASK_DOCUMENTS` | "What certification do I have according to my CV?" | agent: Python searches the documents first, then the LLM answers from the excerpts and cites them |
+| `MULTI_STEP` | "Search for FastAPI tutorials and make a note to watch them tonight" | agent: the LLM calls tools one at a time and sees each result |
+
+```
+request ─► prompt v4 router ─┬─ simple ────────► fast path (unchanged)
+                             └─ ASK_DOCUMENTS / MULTI_STEP
+                                     ▼
+                     agent.py loop (max 4 steps, max 2 actions)
+                       LLM: {"tool": ..., "args": ...}  or  {"final_answer": ..., "sources": [...]}
+                       Python: tool exists? user asked for this kind of action?
+                               actions.validate() allowlist? not repeated? → run → result back to LLM
+                     tools: search_documents, recall_memory, read_clipboard (read-only)
+                            open_app, open_folder, web_search, create_note, save_memory (actions)
+```
+
+**Safety rules enforced by Python, not by the prompt:**
+1. Only the listed tools exist, and every action goes through the same `actions.validate()` allowlist as the fast path.
+2. An action may only run if **the user's own words** asked for that kind of action. For example, `create_note` needs "note" or "write down" in the request. Text from a document or the clipboard can never trigger an action.
+3. At most 2 actions and 4 steps per request, and no identical repeated calls.
+4. Document and clipboard text is wrapped in `<untrusted>` tags in the prompt. This is defence in depth, because rules 1–3 hold even if the model ignores the tags.
+5. A document question where nothing relevant was retrieved is always answered "I couldn't find that in your documents."
+
+**Document search (`backend/app/rag.py`):** files in `documents/` (`.pdf`, `.docx`, `.txt`, `.md`) are split into overlapping chunks of about 800 characters. PDFs are split per page, so answers can cite a page. Each chunk is embedded with Ollama's `nomic-embed-text` model, which is local and free. If Ollama isn't available, a TF-IDF keyword search is used instead (word and character n-grams). The index is saved in `backend/rag_index.json` and rebuilt automatically when files change. You can also use **Re-index** in the UI.
+
+`documents/personal/` (your CV) is in `.gitignore`, so it stays on your computer and is never pushed to GitHub.
+
+### Set up semantic search (one time)
+1. Make sure Ollama is installed and running (the same Ollama you use for `llama3.2:3b`).
+2. In a terminal, run `ollama pull nomic-embed-text` (about 270 MB).
+3. Check it works with `ollama list`. `nomic-embed-text` should be listed.
+4. Start VoicePilot as usual and select **Re-index** in the Documents panel. It should then say "Semantic search · nomic-embed-text".
+
+### Evaluating the agent
+`data/agent_tasks.json` is a fixed suite of 25 tasks: simple commands, document questions, unanswerable questions, multi-step requests, and unsafe requests. One of the unsafe tasks uses a document containing a prompt-injection attempt (`data/eval_documents/`).
+```bash
+python scripts/evaluate_agent.py                 # single-step (v3) vs agent (v4), dry-run
+python scripts/evaluate_agent.py --methods agent --only T06,T13
+```
+Results go to `results/agent_evaluation_<provider>.md`. A task counts as completed only if all its checks pass: right mode, expected actions run, no forbidden actions, answer contains the fact, cited source matches, and "not found" for unanswerable questions. With 25 tasks, one task equals 4 percentage points. This is a small test suite, not statistical evidence.
 
 ## 4. Project structure
 ```
@@ -167,6 +217,8 @@ voicepilot/
 │   │   ├── assistant.py   prompts v1–v3, LLM calls, JSON parsing, recall + summary
 │   │   ├── actions.py     allowlists, validation, desktop actions
 │   │   ├── fallback.py    offline classifier / keyword rules
+│   │   ├── agent.py       bounded agent loop + safety rules
+│   │   ├── rag.py         document loading, chunking, embeddings, search
 │   │   ├── memory.py      SQLite history + memories
 │   │   ├── models.py      Pydantic models
 │   │   └── config.py      settings from .env
@@ -198,6 +250,17 @@ API overview (try it in Swagger at http://127.0.0.1:8000/docs):
 ---
 
 ## 6. References (public code, libraries and documentation used)
+
+**Agent and document search**
+- Yao et al. (2022). *ReAct: Synergizing Reasoning and Acting in Language Models*. https://arxiv.org/abs/2210.03629
+- Lewis et al. (2020). *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. https://arxiv.org/abs/2005.11401
+- Greshake et al. (2023). *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection*. https://arxiv.org/abs/2302.12173
+- OWASP Top 10 for LLM Applications – LLM01 Prompt Injection. https://genai.owasp.org/llmrisk/llm01-prompt-injection/
+- Ollama – embeddings API. https://docs.ollama.com/capabilities/embeddings · model: https://ollama.com/library/nomic-embed-text
+- pypdf – text extraction. https://pypdf.readthedocs.io/en/stable/user/extract-text.html
+- python-docx. https://python-docx.readthedocs.io/en/latest/
+- scikit-learn – TF-IDF term weighting. https://scikit-learn.org/stable/modules/feature_extraction.html#tfidf-term-weighting
+
 Code comments in each file point to the specific source it follows.
 
 **Speech / AI**
