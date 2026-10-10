@@ -92,7 +92,10 @@ def extract_target(intent: str, text: str) -> str | None:
 # ---------------------------------------------------------------- agent routing (offline) ---
 DOC_QUESTION = re.compile(
     r"\b(according to|my cv|cv|resume|my experience|my skills|project (plan|proposal|information|description)"
-    r"|assignment|grading|grade vg|grade g|requirements for|course (rules|requirements|document))\b")
+    r"|assignment|grading|grade vg|grade g|requirements for|course (rules|requirements|document)"
+    r"|certificat\w*|certified|my profile|linkedin|my documents?|voice pilot)\b")
+# Questions that really are about things the user asked VoicePilot to remember
+MEMORY_QUESTION = re.compile(r"\b(remember|told you|i said|asked you|did i (say|tell))\b")
 ACTION_GROUPS = {
     "open": r"\b(open|launch|start|show)\b",
     "search": r"\b(search|google|look up|lookup)\b",
