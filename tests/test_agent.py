@@ -34,6 +34,7 @@ class FakeLLM:
 
 @pytest.fixture(autouse=True)
 def setup(tmp_path, monkeypatch):
+    assert (FIXTURES / "course_rules.md").exists(), "copy tests/fixtures/documents/ from the zip"
     monkeypatch.setattr(config, "DB_PATH", tmp_path / "test.db")
     monkeypatch.setattr(config, "NOTES_DIR", tmp_path / "notes")
     monkeypatch.setattr(config, "DRY_RUN", True)
@@ -135,6 +136,18 @@ def test_multi_step_runs_requested_actions(monkeypatch):
     assert len(list(config.NOTES_DIR.glob("*.txt"))) == 1
 
 
+def test_completion_check_sends_model_back_once(monkeypatch):
+    # llama3.2:3b often answers after the first action; Python reminds it of the second one.
+    llm = fake(monkeypatch,
+               '{"tool": "web_search", "args": {"query": "fastapi tutorials"}}',
+               '{"final_answer": "Searched."}',                                   # too early
+               '{"tool": "create_note", "args": {"text": "watch fastapi tutorials tonight"}}',
+               '{"final_answer": "Searched and saved a note."}')
+    res = agent.run("search for fastapi tutorials and make a note to watch them tonight", "MULTI_STEP")
+    assert [t for t, _ in res.actions_run] == ["web_search", "create_note"]
+    assert "NOT FINISHED" in llm.prompts[2]
+
+
 def test_action_limit(monkeypatch):
     fake(monkeypatch,
          '{"tool": "create_note", "args": {"text": "one"}}',
@@ -162,7 +175,7 @@ def test_unknown_tool_and_allowlist_are_enforced(monkeypatch):
 
 def test_invalid_json_is_recovered(monkeypatch):
     fake(monkeypatch, "Sure! I will open it.", '{"final_answer": "Done."}')
-    res = agent.run("open chrome and then search for news", "MULTI_STEP")
+    res = agent.run("read my clipboard and then summarise it", "MULTI_STEP")
     assert res.steps[0].status == "error" and res.message == "Done."
 
 
@@ -208,6 +221,19 @@ def test_api_misheard_sentence_is_not_saved(monkeypatch):
     with TestClient(app) as client:
         r = client.post("/api/command", json={"text": "We're setting it while I have on my CV."}).json()
     assert r["status"] == "rejected" and memory.list_memories() == []
+
+
+def test_api_two_actions_are_routed_to_agent(monkeypatch):
+    from fastapi.testclient import TestClient
+    from app.main import app
+    fake(monkeypatch,
+         '{"intent": "SAVE_MEMORY", "target": "presentation on friday", "reply": "Ok."}',  # misses part 2
+         '{"tool": "save_memory", "args": {"fact": "my presentation is on friday"}}',
+         '{"tool": "open_app", "args": {"name": "vscode"}}',
+         '{"final_answer": "Saved and opened VS Code."}')
+    with TestClient(app) as client:
+        r = client.post("/api/command", json={"text": "remember that my presentation is on friday and then open vs code"}).json()
+    assert r["intent"] == "MULTI_STEP" and r["status"] == "success" and len(r["steps"]) == 2
 
 
 def test_api_fast_path_unchanged(monkeypatch):

@@ -93,7 +93,8 @@ def extract_target(intent: str, text: str) -> str | None:
 DOC_QUESTION = re.compile(
     r"\b(according to|my cv|cv|resume|my experience|my skills|project (plan|proposal|information|description)"
     r"|assignment|grading|grade vg|grade g|requirements for|course (rules|requirements|document)"
-    r"|certificat\w*|certified|my profile|linkedin|my documents?|voice pilot)\b")
+    r"|certificat\w*|certified|my profile|linkedin|my documents?|voice pilot"
+    r"|what (do|does) my \w+( \w+)?( \w+)? (say|mention))\b")
 # Questions that really are about things the user asked VoicePilot to remember
 MEMORY_QUESTION = re.compile(r"\b(remember|told you|i said|asked you|did i (say|tell))\b")
 ACTION_GROUPS = {
@@ -101,6 +102,7 @@ ACTION_GROUPS = {
     "search": r"\b(search|google|look up|lookup)\b",
     "note": r"\b(note|write down|jot)\b",
     "memory": r"\b(remember|keep in mind)\b",
+    "clipboard": r"\b(clipboard|copied)\b",
 }
 
 

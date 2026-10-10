@@ -203,4 +203,10 @@ id,source,text,clean_text,label,target,audio_file
 923aacd76b,recording,Open file explorer.,open file explorer,OPEN_APP,explorer,audio/923aacd76b.webm
 eee79e77e0,recording,Open my downloads.,open my downloads,OPEN_FOLDER,downloads,audio/eee79e77e0.webm
 98542e8748,recording,summarize my clip board,summarize my clip board,SUMMARIZE_CLIPBOARD,,audio/98542e8748.webm
+d93cd5f970,recording,Search on Google,search on google,WEB_SEARCH,on Google,audio/d93cd5f970.webm
+fe4c8ab192,recording,Search richmon on Google,search richmon on google,WEB_SEARCH,richmon on Google,audio/fe4c8ab192.webm
+c506481332,recording,Search Kasia on Google Chrome.,search kasia on google chrome,WEB_SEARCH,Kasia on Google Chrome,audio/c506481332.webm
+7f4ac3a82e,recording,such rich man watching us to soon on Google Chrome.,such rich man watching us to soon on google chrome,WEB_SEARCH,Chrome,audio/7f4ac3a82e.webm
 c93b9d3cb7,recording,Open Microsoft Edge,open microsoft edge,OPEN_APP,edge,audio/c93b9d3cb7.webm
+9ae0e18a5c,recording,Search Kasia on Google,search kasia on google,WEB_SEARCH,Kasia on Google,audio/9ae0e18a5c.webm
+8c86ad45a0,recording,Create a node called HOPE,create a node called hope,CREATE_NOTE,Create a node called HOPE,audio/8c86ad45a0.webm

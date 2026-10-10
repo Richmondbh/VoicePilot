@@ -60,6 +60,10 @@ def run_pipeline(text: str) -> CommandResponse:
     # Safety net: "delete my downloads" must never become "open downloads".
     if fallback.is_dangerous(text) and intent in {"OPEN_APP", "OPEN_FOLDER"}:
         intent, target = "UNKNOWN", None
+    # Routing guard: one request with two different actions joined by "and"/"then"
+    # is a multi-step task, even if the model only saw the first action.
+    if intent not in AGENT_INTENTS and fallback.route(text) == "MULTI_STEP":
+        intent = "MULTI_STEP"
     # Routing guard: questions about the CV/profile/course documents belong to the
     # document search, even if the model guessed RECALL_MEMORY or UNKNOWN.
     if (intent in {"RECALL_MEMORY", "UNKNOWN"} and fallback.DOC_QUESTION.search(fallback.clean_text(text))

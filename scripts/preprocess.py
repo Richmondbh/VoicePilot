@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "backend"))
 from app.actions import normalize_app, normalize_folder  # noqa: E402
-from app.fallback import clean_text  # noqa: E402
+from app.fallback import clean_text, extract_target  # noqa: E402
 
 RAW = ROOT / "data" / "raw"
 OUT = ROOT / "data" / "processed"
@@ -45,7 +45,9 @@ def normalise_target(row) -> str | None:
     if row["label"] == "OPEN_FOLDER":
         return normalize_folder(target) or normalize_folder(row["text"])
     if row["label"] in {"WEB_SEARCH", "CREATE_NOTE", "SAVE_MEMORY"}:
-        return target.strip() or None
+        # Recordings are saved without a target, so derive it from the transcription
+        # ("Search Kasia on Google" -> "Kasia on Google").
+        return target.strip() or (extract_target(row["label"], row["text"]) or "").strip() or None
     return ""  # intents without a target
 
 
@@ -82,11 +84,18 @@ def main():
     df = pd.concat([df, rec], ignore_index=True)
     report["1_raw_rows"] = len(df)
     report["1_raw_rows_by_source"] = df["source"].value_counts().to_dict()
+    audit = df.copy()            # every raw row + why it was dropped (for the recordings report)
+    audit["drop_reason"] = ""
+
+    def mark(dropped_index, reason):
+        idx = [i for i in dropped_index if audit.at[i, "drop_reason"] == ""]
+        audit.loc[idx, "drop_reason"] = reason
 
     # 1. remove empty / noise transcriptions
     df["text"] = df["text"].fillna("")
-    df = df[~df["text"].str.match(NOISE)]
-    df = df[df["text"].str.split().str.len() >= 2]  # "open", "ok" carry no usable intent
+    noise = df["text"].str.match(NOISE) | (df["text"].str.split().str.len() < 2)  # "open", "ok"
+    mark(df.index[noise], "empty / noise")
+    df = df[~noise]
     report["2_after_removing_empty_noise"] = len(df)
 
     # 2. normalise text (whitespace, case for comparison, filler words)
@@ -96,19 +105,24 @@ def main():
     # 3. normalise labels, drop unlabelled rows
     df["label"] = df["label"].apply(normalise_label)
     report["3_unlabelled_dropped"] = int(df["label"].isna().sum())
+    mark(df.index[df["label"].isna()], "no valid label")
     df = df.dropna(subset=["label"])
 
     # 4. normalise + validate targets (e.g. "crome" -> chrome); drop rows whose target is missing
     df["target"] = df.apply(normalise_target, axis=1)
     report["4_invalid_target_dropped"] = int(df["target"].isna().sum())
+    mark(df.index[df["target"].isna()], "target not recognised (e.g. misheard app name)")
     df = df.dropna(subset=["target"])
 
     # 5. remove duplicates (after normalisation "  OPEN CHROME " == "open chrome")
     before = len(df)
+    mark(df.index[df.duplicated(subset=["clean_text"])], "duplicate")
     df = df.drop_duplicates(subset=["clean_text"])
     report["5_duplicates_removed"] = before - len(df)
     report["6_clean_rows"] = len(df)
     report["6_rows_per_label"] = df["label"].value_counts().to_dict()
+    recs = audit[audit["source"] == "recording"]
+    report["6_recordings_kept"] = f"{int((recs['drop_reason'] == '').sum())} of {len(recs)}"
 
     # 6. stratified split 70 / 15 / 15
     train, rest = train_test_split(df, test_size=0.30, stratify=df["label"], random_state=42)
@@ -121,6 +135,11 @@ def main():
     train[cols].to_csv(OUT / "train.csv", index=False)
     val[cols].to_csv(OUT / "val.csv", index=False)
     test[cols].to_csv(OUT / "test.csv", index=False)
+    # One row per voice recording: what Whisper heard and whether it was kept (and why not).
+    if len(recs):
+        rep = recs[["id", "audio_file", "label", "text", "drop_reason"]].rename(columns={"text": "whisper_heard"})
+        rep["drop_reason"] = rep["drop_reason"].replace("", "kept")
+        rep.to_csv(OUT / "recordings_report.csv", index=False)
     (OUT / "preprocessing_report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False))
     print(json.dumps(report, indent=2, ensure_ascii=False))
 

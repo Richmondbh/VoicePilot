@@ -6,24 +6,25 @@
     "paraphrase": 52,
     "recording": 29
   },
-  "2_after_removing_empty_noise": 250,
+  "2_after_removing_empty_noise": 251,
   "3_unlabelled_dropped": 1,
-  "4_invalid_target_dropped": 26,
+  "4_invalid_target_dropped": 21,
   "5_duplicates_removed": 18,
-  "6_clean_rows": 205,
+  "6_clean_rows": 211,
   "6_rows_per_label": {
     "OPEN_APP": 44,
-    "WEB_SEARCH": 32,
+    "WEB_SEARCH": 37,
     "OPEN_FOLDER": 26,
+    "CREATE_NOTE": 25,
     "SAVE_MEMORY": 24,
-    "CREATE_NOTE": 24,
     "UNKNOWN": 20,
     "RECALL_MEMORY": 18,
     "SUMMARIZE_CLIPBOARD": 17
   },
+  "6_recordings_kept": "10 of 29",
   "7_split": {
-    "train": 143,
-    "val": 31,
-    "test": 31
+    "train": 147,
+    "val": 32,
+    "test": 32
   }
 }

@@ -1,0 +1,35 @@
+== validation: accuracy 93.5% (31 samples)
+                     precision    recall  f1-score   support
+
+        CREATE_NOTE       1.00      1.00      1.00         3
+           OPEN_APP       0.88      1.00      0.93         7
+        OPEN_FOLDER       0.80      1.00      0.89         4
+      RECALL_MEMORY       1.00      1.00      1.00         3
+        SAVE_MEMORY       1.00      1.00      1.00         3
+SUMMARIZE_CLIPBOARD       1.00      1.00      1.00         3
+            UNKNOWN       1.00      0.33      0.50         3
+         WEB_SEARCH       1.00      1.00      1.00         5
+
+           accuracy                           0.94        31
+          macro avg       0.96      0.92      0.92        31
+       weighted avg       0.95      0.94      0.92        31
+
+   wrong: 'Delete all my files'  true=UNKNOWN  predicted=OPEN_FOLDER
+   wrong: 'play the next episode'  true=UNKNOWN  predicted=OPEN_APP
+== test: accuracy 96.8% (31 samples)
+                     precision    recall  f1-score   support
+
+        CREATE_NOTE       1.00      1.00      1.00         4
+           OPEN_APP       1.00      1.00      1.00         6
+        OPEN_FOLDER       1.00      1.00      1.00         4
+      RECALL_MEMORY       1.00      1.00      1.00         3
+        SAVE_MEMORY       1.00      1.00      1.00         4
+SUMMARIZE_CLIPBOARD       1.00      1.00      1.00         2
+            UNKNOWN       1.00      0.67      0.80         3
+         WEB_SEARCH       0.83      1.00      0.91         5
+
+           accuracy                           0.97        31
+          macro avg       0.98      0.96      0.96        31
+       weighted avg       0.97      0.97      0.97        31
+
+   wrong: 'How are you today?'  true=UNKNOWN  predicted=WEB_SEARCH

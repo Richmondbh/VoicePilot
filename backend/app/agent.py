@@ -97,6 +97,19 @@ Your next JSON object:"""
 
 NOT_FOUND = "I couldn't find that in your documents."
 
+# Human-readable names for the completion check ("you still have to: make the note")
+ACTION_NAMES = {"open_app": "open the app", "open_folder": "open the folder", "web_search": "do the web search",
+                "create_note": "create the note", "save_memory": "save it to memory"}
+
+
+def requested_actions(request: str) -> set[str]:
+    """Action types the user's own words asked for (open_app/open_folder count as one 'open')."""
+    wanted = {tool for tool, pattern in USER_PERMISSION.items() if re.search(pattern, request.lower())}
+    if {"open_app", "open_folder"} <= wanted:
+        wanted -= {"open_app", "open_folder"}
+        wanted.add("open")
+    return wanted
+
 # Document questions use one focused "answer from these excerpts" call instead of the
 # open-ended loop: small local models answer far more reliably this way (classic RAG).
 ANSWER_PROMPT = """Answer the user's question using ONLY the excerpts from the user's own documents below.
@@ -137,6 +150,13 @@ class _Run:
         self.excerpts: list[str] = []        # "[S1] file.pdf p.2: text" for the answer prompt
         self.actions_run: list[tuple[str, dict]] = []
         self.done_calls: set[str] = set()
+        self.reminded = False                # completion check is applied once per run
+
+    def missing_actions(self) -> list[str]:
+        done = {tool for tool, _ in self.actions_run}
+        if done & {"open_app", "open_folder"}:
+            done.add("open")
+        return [ACTION_NAMES.get(t, "open it") for t in sorted(requested_actions(self.request) - done)]
 
     # ---------------------------------------------------------- tools ----
     def call(self, tool: str, args: dict, thought: str | None = None) -> None:
@@ -269,6 +289,14 @@ def run(request: str, intent: str) -> AgentResult:
                                         result=_preview(raw, 160)))
             continue
         if "final_answer" in data:
+            # Completion check: small models often stop after the first action. If the
+            # user asked for something that has not happened yet, send the model back once.
+            missing = run_.missing_actions()
+            if missing and not run_.reminded and len(run_.steps) < config.AGENT_MAX_STEPS:
+                run_.reminded = True
+                run_.transcript.append("NOT FINISHED: the user also asked you to "
+                                       + " and ".join(missing) + ". Call that tool now.")
+                continue
             answer = str(data["final_answer"]).strip() or "Done."
             return run_.result("success", answer, run_.cited(data.get("sources")))
         tool = str(data.get("tool", "")).strip()

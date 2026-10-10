@@ -1,187 +1,193 @@
 method,text,label,predicted,expected_target,predicted_target,intent_correct,target_correct
-rules,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,read chapter 4 of the course book,True,
-rules,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
-rules,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-rules,I want to browse the internet,OPEN_APP,OPEN_APP,chrome,chrome,True,True
-rules,Open the browser.,OPEN_APP,OPEN_APP,chrome,chrome,True,True
 rules,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,email the teacher about the deadline,True,
-rules,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
-rules,install Photoshop,UNKNOWN,UNKNOWN,,,True,
-rules,How are you today?,UNKNOWN,UNKNOWN,,,True,
-rules,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
-rules,Open VS Code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-rules,Read my clipboard and summarize it,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-rules,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
-rules,Please remember that I lent my charger to Erik,SAVE_MEMORY,SAVE_MEMORY,I lent my charger to Erik,I lent my charger to Erik,True,
-rules,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,,True,
-rules,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-rules,remember my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
-rules,search for football results today,WEB_SEARCH,WEB_SEARCH,football results today,football results today,True,
-rules,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten,True,
-rules,show me the download folder,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
-rules,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
-rules,Don't forget that the timetable meeting is on Thursday,SAVE_MEMORY,SAVE_MEMORY,the timetable meeting is on Thursday,the timetable meeting is on Thursday,True,
-rules,order a pizza,UNKNOWN,UNKNOWN,,,True,
-rules,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-rules,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,weather in Östersund,True,
+rules,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
 rules,CAN YOU START WORD?,OPEN_APP,OPEN_APP,word,word,True,True
-rules,when is the timetable meeting,RECALL_MEMORY,UNKNOWN,,,False,
-rules,remind me what I told you about the router,RECALL_MEMORY,UNKNOWN,,,False,
-rules,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
-rules,take a note that call the dentist on Monday,CREATE_NOTE,CREATE_NOTE,call the dentist on Monday,call the dentist on Monday,True,
+rules,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+rules,Launch Microsoft Edge,OPEN_APP,OPEN_APP,edge,edge,True,True
+rules,jot down the meeting moved to 3 pm,CREATE_NOTE,CREATE_NOTE,the meeting moved to 3 pm,the meeting moved to 3 pm,True,
 rules,Google pydantic models tutorial,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,
-classifier,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,read chapter 4 of the course book,True,
-classifier,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
-classifier,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-classifier,I want to browse the internet,OPEN_APP,OPEN_APP,chrome,chrome,True,True
-classifier,Open the browser.,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+rules,Delete all my files,UNKNOWN,UNKNOWN,,,True,
+rules,Short summary of the clipboard,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+rules,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+rules,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+rules,do you know when my presentation is,RECALL_MEMORY,RECALL_MEMORY,,,True,
+rules,jot down fix the login bug,CREATE_NOTE,CREATE_NOTE,fix the login bug,fix the login bug,True,
+rules,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+rules,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
+rules,um remember that my project presentation is on Friday,SAVE_MEMORY,SAVE_MEMORY,my project presentation is on Friday,my project presentation is on Friday,True,
+rules,open calculator,OPEN_APP,OPEN_APP,calculator,calculator,True,True
+rules,How are you today?,UNKNOWN,UNKNOWN,,,True,
+rules,Search Google for what is a large language model.,WEB_SEARCH,WEB_SEARCH,what is a large language model,what is a large language model,True,
+rules,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,,True,
+rules,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+rules,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
+rules,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten,True,
+rules,install Photoshop,UNKNOWN,UNKNOWN,,,True,
+rules,make a summary of the copied text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+rules,find information about best laptops for students 2026,WEB_SEARCH,WEB_SEARCH,best laptops for students 2026,best laptops for students 2026,True,
+rules,I need to code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+rules,Take me to downloaded files,OPEN_FOLDER,OPEN_APP,downloads,explorer,False,False
+rules,remind me what I told you about the router,RECALL_MEMORY,UNKNOWN,,,False,
+rules,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+rules,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
+rules,Look up python list comprehension,WEB_SEARCH,WEB_SEARCH,python list comprehension,python list comprehension,True,
 classifier,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,email the teacher about the deadline,True,
-classifier,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
-classifier,install Photoshop,UNKNOWN,UNKNOWN,,,True,
-classifier,How are you today?,UNKNOWN,WEB_SEARCH,,How are you today,False,
-classifier,Can you open docs?,OPEN_FOLDER,OPEN_APP,documents,,False,False
-classifier,Open VS Code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-classifier,Read my clipboard and summarize it,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-classifier,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
-classifier,Please remember that I lent my charger to Erik,SAVE_MEMORY,SAVE_MEMORY,I lent my charger to Erik,I lent my charger to Erik,True,
-classifier,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,,True,
-classifier,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-classifier,remember my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
-classifier,search for football results today,WEB_SEARCH,WEB_SEARCH,football results today,football results today,True,
-classifier,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten,True,
-classifier,show me the download folder,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
-classifier,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
-classifier,Don't forget that the timetable meeting is on Thursday,SAVE_MEMORY,SAVE_MEMORY,the timetable meeting is on Thursday,the timetable meeting is on Thursday,True,
-classifier,order a pizza,UNKNOWN,UNKNOWN,,,True,
-classifier,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-classifier,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,weather in Östersund,True,
+classifier,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
 classifier,CAN YOU START WORD?,OPEN_APP,OPEN_APP,word,word,True,True
-classifier,when is the timetable meeting,RECALL_MEMORY,RECALL_MEMORY,,,True,
-classifier,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,,True,
-classifier,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
-classifier,take a note that call the dentist on Monday,CREATE_NOTE,CREATE_NOTE,call the dentist on Monday,call the dentist on Monday,True,
+classifier,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+classifier,Launch Microsoft Edge,OPEN_APP,OPEN_APP,edge,edge,True,True
+classifier,jot down the meeting moved to 3 pm,CREATE_NOTE,CREATE_NOTE,the meeting moved to 3 pm,the meeting moved to 3 pm,True,
 classifier,Google pydantic models tutorial,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,
-llm-v1,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,chapter 4 of the course book,True,
-llm-v1,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
-llm-v1,um open VSCode,OPEN_APP,OPEN_FOLDER,vscode,VSCode,False,True
-llm-v1,I want to browse the internet,OPEN_APP,WEB_SEARCH,chrome,https://www.google.com,False,False
-llm-v1,Open the browser.,OPEN_APP,OPEN_APP,chrome,browser,True,True
+classifier,Delete all my files,UNKNOWN,OPEN_FOLDER,,,False,
+classifier,Short summary of the clipboard,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+classifier,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+classifier,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+classifier,do you know when my presentation is,RECALL_MEMORY,RECALL_MEMORY,,,True,
+classifier,jot down fix the login bug,CREATE_NOTE,CREATE_NOTE,fix the login bug,fix the login bug,True,
+classifier,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+classifier,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
+classifier,um remember that my project presentation is on Friday,SAVE_MEMORY,SAVE_MEMORY,my project presentation is on Friday,my project presentation is on Friday,True,
+classifier,open calculator,OPEN_APP,OPEN_APP,calculator,calculator,True,True
+classifier,How are you today?,UNKNOWN,WEB_SEARCH,,How are you today,False,
+classifier,Search Google for what is a large language model.,WEB_SEARCH,WEB_SEARCH,what is a large language model,what is a large language model,True,
+classifier,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,,True,
+classifier,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+classifier,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
+classifier,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten,True,
+classifier,install Photoshop,UNKNOWN,UNKNOWN,,,True,
+classifier,make a summary of the copied text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+classifier,find information about best laptops for students 2026,WEB_SEARCH,WEB_SEARCH,best laptops for students 2026,best laptops for students 2026,True,
+classifier,I need to code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+classifier,Take me to downloaded files,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
+classifier,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,,True,
+classifier,Can you open docs?,OPEN_FOLDER,OPEN_APP,documents,,False,False
+classifier,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
+classifier,Look up python list comprehension,WEB_SEARCH,WEB_SEARCH,python list comprehension,python list comprehension,True,
 llm-v1,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,email the teacher about the deadline,True,
-llm-v1,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,https://www.google.com/search?q=React+TypeScript+microphone+examples,True,
-llm-v1,install Photoshop,UNKNOWN,OPEN_APP,,Photoshop,False,
-llm-v1,How are you today?,UNKNOWN,UNKNOWN,,CONVERSATION,True,
-llm-v1,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,docs,True,True
-llm-v1,Open VS Code.,OPEN_APP,OPEN_APP,vscode,VS Code,True,True
-llm-v1,Read my clipboard and summarize it,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,clipboard,True,
-llm-v1,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
-llm-v1,Please remember that I lent my charger to Erik,SAVE_MEMORY,RECALL_MEMORY,I lent my charger to Erik,lent charger to Erik,False,
-llm-v1,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,clipboard,True,
-llm-v1,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,VSCODE,True,True
-llm-v1,remember my wifi router is in the hallway,SAVE_MEMORY,RECALL_MEMORY,my wifi router is in the hallway,WiFi router location in hallway,False,
-llm-v1,search for football results today,WEB_SEARCH,WEB_SEARCH,football results today,football results today,True,
-llm-v1,Remember that my meeting is at ten.,SAVE_MEMORY,RECALL_MEMORY,my meeting is at ten,meeting time,False,
-llm-v1,show me the download folder,OPEN_FOLDER,OPEN_FOLDER,downloads,/download,True,True
-llm-v1,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
-llm-v1,Don't forget that the timetable meeting is on Thursday,SAVE_MEMORY,RECALL_MEMORY,the timetable meeting is on Thursday,timetable meeting on Thursday,False,
-llm-v1,order a pizza,UNKNOWN,UNKNOWN,,ORDER_PIZZA,True,
-llm-v1,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,EXPLAIN,True,
-llm-v1,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,Östersund weather,True,
+llm-v1,um open VSCode,OPEN_APP,OPEN_FOLDER,vscode,VSCode,False,True
 llm-v1,CAN YOU START WORD?,OPEN_APP,OPEN_APP,word,WORD,True,True
-llm-v1,when is the timetable meeting,RECALL_MEMORY,WEB_SEARCH,,timetable meeting date,False,
-llm-v1,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,router,True,
-llm-v1,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
-llm-v1,take a note that call the dentist on Monday,CREATE_NOTE,CREATE_NOTE,call the dentist on Monday,Call dentist on Monday,True,
+llm-v1,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v1,Launch Microsoft Edge,OPEN_APP,OPEN_APP,edge,Microsoft Edge,True,True
+llm-v1,jot down the meeting moved to 3 pm,CREATE_NOTE,CREATE_NOTE,the meeting moved to 3 pm,Meeting moved to 3 pm,True,
 llm-v1,Google pydantic models tutorial,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,https://docs.pydantic.io/en/latest/,True,
-llm-v2,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,read chapter 4 of the course book,True,
-llm-v2,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
-llm-v2,um open VSCode,OPEN_APP,OPEN_APP,vscode,VSCode,True,True
-llm-v2,I want to browse the internet,OPEN_APP,WEB_SEARCH,chrome,browsing the internet,False,True
-llm-v2,Open the browser.,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v1,Delete all my files,UNKNOWN,UNKNOWN,,DELETE_ALL_FILES,True,
+llm-v1,Short summary of the clipboard,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,clipboard,True,
+llm-v1,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
+llm-v1,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,VSCODE,True,True
+llm-v1,do you know when my presentation is,RECALL_MEMORY,WEB_SEARCH,,presentation schedule,False,
+llm-v1,jot down fix the login bug,CREATE_NOTE,CREATE_NOTE,fix the login bug,fix the login bug,True,
+llm-v1,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,EXPLAIN,True,
+llm-v1,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,UNKNOWN,my wifi router is in the hallway,RECALL_MEMORY,False,
+llm-v1,um remember that my project presentation is on Friday,SAVE_MEMORY,RECALL_MEMORY,my project presentation is on Friday,project presentation on Friday,False,
+llm-v1,open calculator,OPEN_APP,OPEN_APP,calculator,calculator,True,True
+llm-v1,How are you today?,UNKNOWN,UNKNOWN,,CONVERSATION,True,
+llm-v1,Search Google for what is a large language model.,WEB_SEARCH,WEB_SEARCH,what is a large language model,https://www.google.com/search?q=large+language+model,True,
+llm-v1,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,clipboard,True,
+llm-v1,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
+llm-v1,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,https://www.google.com/search?q=React+TypeScript+microphone+examples,True,
+llm-v1,Remember that my meeting is at ten.,SAVE_MEMORY,RECALL_MEMORY,my meeting is at ten,meeting time,False,
+llm-v1,install Photoshop,UNKNOWN,OPEN_APP,,Photoshop,False,
+llm-v1,make a summary of the copied text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,copied text,True,
+llm-v1,find information about best laptops for students 2026,WEB_SEARCH,WEB_SEARCH,best laptops for students 2026,best laptops for students 2026,True,
+llm-v1,I need to code.,OPEN_APP,OPEN_APP,vscode,CODE_EDITOR,True,True
+llm-v1,Take me to downloaded files,OPEN_FOLDER,OPEN_FOLDER,downloads,/Downloads,True,True
+llm-v1,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,router,True,
+llm-v1,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,docs,True,True
+llm-v1,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
+llm-v1,Look up python list comprehension,WEB_SEARCH,WEB_SEARCH,python list comprehension,python list comprehension,True,
 llm-v2,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,email the teacher about the deadline,True,
-llm-v2,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
-llm-v2,install Photoshop,UNKNOWN,UNKNOWN,,install Photoshop,True,
-llm-v2,How are you today?,UNKNOWN,UNKNOWN,,,True,
-llm-v2,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
-llm-v2,Open VS Code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-llm-v2,Read my clipboard and summarize it,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-llm-v2,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
-llm-v2,Please remember that I lent my charger to Erik,SAVE_MEMORY,SAVE_MEMORY,I lent my charger to Erik,I lent my charger to Erik,True,
-llm-v2,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,my presentation is on Friday,True,
-llm-v2,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-llm-v2,remember my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
-llm-v2,search for football results today,WEB_SEARCH,WEB_SEARCH,football results today,football results today,True,
-llm-v2,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten.,True,
-llm-v2,show me the download folder,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
-llm-v2,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
-llm-v2,Don't forget that the timetable meeting is on Thursday,SAVE_MEMORY,SAVE_MEMORY,the timetable meeting is on Thursday,the timetable meeting is on Thursday,True,
-llm-v2,order a pizza,UNKNOWN,UNKNOWN,,order a pizza,True,
-llm-v2,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-llm-v2,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,weather in Östersund,True,
+llm-v2,um open VSCode,OPEN_APP,OPEN_APP,vscode,VSCode,True,True
 llm-v2,CAN YOU START WORD?,OPEN_APP,OPEN_APP,word,word,True,True
-llm-v2,when is the timetable meeting,RECALL_MEMORY,UNKNOWN,,timetable meeting,False,
-llm-v2,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,router,True,
-llm-v2,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
-llm-v2,take a note that call the dentist on Monday,CREATE_NOTE,CREATE_NOTE,call the dentist on Monday,call the dentist on Monday,True,
+llm-v2,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v2,Launch Microsoft Edge,OPEN_APP,OPEN_APP,edge,edge,True,True
+llm-v2,jot down the meeting moved to 3 pm,CREATE_NOTE,SAVE_MEMORY,the meeting moved to 3 pm,the meeting was moved to 3 pm,False,
 llm-v2,Google pydantic models tutorial,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,
-llm-v3,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,read chapter 4 of the course book,True,
-llm-v3,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
-llm-v3,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-llm-v3,I want to browse the internet,OPEN_APP,WEB_SEARCH,chrome,browse the internet,False,True
-llm-v3,Open the browser.,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v2,Delete all my files,UNKNOWN,UNKNOWN,,Delete all files in the 'Documents' folder,True,
+llm-v2,Short summary of the clipboard,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v2,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
+llm-v2,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+llm-v2,do you know when my presentation is,RECALL_MEMORY,RECALL_MEMORY,,my presentation is on Friday,True,
+llm-v2,jot down fix the login bug,CREATE_NOTE,CREATE_NOTE,fix the login bug,fix the login bug,True,
+llm-v2,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v2,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
+llm-v2,um remember that my project presentation is on Friday,SAVE_MEMORY,SAVE_MEMORY,my project presentation is on Friday,my project presentation is on Friday,True,
+llm-v2,open calculator,OPEN_APP,OPEN_APP,calculator,calculator,True,True
+llm-v2,How are you today?,UNKNOWN,UNKNOWN,,,True,
+llm-v2,Search Google for what is a large language model.,WEB_SEARCH,WEB_SEARCH,what is a large language model,large language model,True,
+llm-v2,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,my presentation is on Friday,True,
+llm-v2,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
+llm-v2,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
+llm-v2,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten.,True,
+llm-v2,install Photoshop,UNKNOWN,UNKNOWN,,install Photoshop,True,
+llm-v2,make a summary of the copied text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v2,find information about best laptops for students 2026,WEB_SEARCH,WEB_SEARCH,best laptops for students 2026,best laptops for students 2026,True,
+llm-v2,I need to code.,OPEN_APP,UNKNOWN,vscode,code,False,True
+llm-v2,Take me to downloaded files,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
+llm-v2,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,router,True,
+llm-v2,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+llm-v2,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
+llm-v2,Look up python list comprehension,WEB_SEARCH,WEB_SEARCH,python list comprehension,python list comprehension,True,
 llm-v3,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,I need to email the teacher about the deadline,True,
-llm-v3,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
-llm-v3,install Photoshop,UNKNOWN,UNKNOWN,,,True,
-llm-v3,How are you today?,UNKNOWN,UNKNOWN,,,True,
-llm-v3,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
-llm-v3,Open VS Code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-llm-v3,Read my clipboard and summarize it,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-llm-v3,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
-llm-v3,Please remember that I lent my charger to Erik,SAVE_MEMORY,SAVE_MEMORY,I lent my charger to Erik,I lent my charger to Erik,True,
-llm-v3,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,friday,True,
-llm-v3,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-llm-v3,remember my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
-llm-v3,search for football results today,WEB_SEARCH,WEB_SEARCH,football results today,football results today,True,
-llm-v3,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten,True,
-llm-v3,show me the download folder,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
-llm-v3,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
-llm-v3,Don't forget that the timetable meeting is on Thursday,SAVE_MEMORY,SAVE_MEMORY,the timetable meeting is on Thursday,the timetable meeting is on Thursday,True,
-llm-v3,order a pizza,UNKNOWN,UNKNOWN,,,True,
-llm-v3,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-llm-v3,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,weather Östersund,True,
+llm-v3,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
 llm-v3,CAN YOU START WORD?,OPEN_APP,OPEN_APP,word,word,True,True
-llm-v3,when is the timetable meeting,RECALL_MEMORY,RECALL_MEMORY,,timetable meeting,True,
-llm-v3,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,router,True,
-llm-v3,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
-llm-v3,take a note that call the dentist on Monday,CREATE_NOTE,CREATE_NOTE,call the dentist on Monday,call the dentist on Monday,True,
+llm-v3,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v3,Launch Microsoft Edge,OPEN_APP,OPEN_APP,edge,edge,True,True
+llm-v3,jot down the meeting moved to 3 pm,CREATE_NOTE,CREATE_NOTE,the meeting moved to 3 pm,the meeting moved to 3 pm,True,
 llm-v3,Google pydantic models tutorial,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,
-llm-v4,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,read chapter 4 of the course book,True,
-llm-v4,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
-llm-v4,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-llm-v4,I want to browse the internet,OPEN_APP,WEB_SEARCH,chrome,browse the internet,False,True
-llm-v4,Open the browser.,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v3,Delete all my files,UNKNOWN,UNKNOWN,,,True,
+llm-v3,Short summary of the clipboard,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v3,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+llm-v3,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+llm-v3,do you know when my presentation is,RECALL_MEMORY,RECALL_MEMORY,,presentation,True,
+llm-v3,jot down fix the login bug,CREATE_NOTE,CREATE_NOTE,fix the login bug,fix the login bug,True,
+llm-v3,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v3,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
+llm-v3,um remember that my project presentation is on Friday,SAVE_MEMORY,SAVE_MEMORY,my project presentation is on Friday,my project presentation is on Friday,True,
+llm-v3,open calculator,OPEN_APP,OPEN_APP,calculator,calculator,True,True
+llm-v3,How are you today?,UNKNOWN,UNKNOWN,,,True,
+llm-v3,Search Google for what is a large language model.,WEB_SEARCH,WEB_SEARCH,what is a large language model,what is a large language model,True,
+llm-v3,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,friday,True,
+llm-v3,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+llm-v3,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
+llm-v3,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten,True,
+llm-v3,install Photoshop,UNKNOWN,UNKNOWN,,,True,
+llm-v3,make a summary of the copied text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v3,find information about best laptops for students 2026,WEB_SEARCH,WEB_SEARCH,best laptops for students 2026,best laptops for students 2026,True,
+llm-v3,I need to code.,OPEN_APP,UNKNOWN,vscode,,False,False
+llm-v3,Take me to downloaded files,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
+llm-v3,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,router,True,
+llm-v3,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+llm-v3,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
+llm-v3,Look up python list comprehension,WEB_SEARCH,WEB_SEARCH,python list comprehension,python list comprehension,True,
 llm-v4,new note email the teacher about the deadline,CREATE_NOTE,MULTI_STEP,email the teacher about the deadline,search for fastapi tutorials and make a note to email the teacher about the deadline,False,
-llm-v4,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
-llm-v4,install Photoshop,UNKNOWN,UNKNOWN,,,True,
-llm-v4,How are you today?,UNKNOWN,UNKNOWN,,,True,
-llm-v4,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
-llm-v4,Open VS Code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-llm-v4,Read my clipboard and summarize it,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-llm-v4,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
-llm-v4,Please remember that I lent my charger to Erik,SAVE_MEMORY,SAVE_MEMORY,I lent my charger to Erik,I lent my charger to Erik,True,
-llm-v4,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,what you remember,True,
-llm-v4,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
-llm-v4,remember my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
-llm-v4,search for football results today,WEB_SEARCH,WEB_SEARCH,football results today,football results today,True,
-llm-v4,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten,True,
-llm-v4,show me the download folder,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
-llm-v4,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
-llm-v4,Don't forget that the timetable meeting is on Thursday,SAVE_MEMORY,SAVE_MEMORY,the timetable meeting is on Thursday,the timetable meeting is on Thursday,True,
-llm-v4,order a pizza,UNKNOWN,UNKNOWN,,,True,
-llm-v4,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
-llm-v4,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,weather Östersund,True,
+llm-v4,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
 llm-v4,CAN YOU START WORD?,OPEN_APP,OPEN_APP,word,word,True,True
-llm-v4,when is the timetable meeting,RECALL_MEMORY,RECALL_MEMORY,,timetable meeting,True,
-llm-v4,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,router,True,
-llm-v4,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
-llm-v4,take a note that call the dentist on Monday,CREATE_NOTE,CREATE_NOTE,call the dentist on Monday,call the dentist on Monday,True,
+llm-v4,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v4,Launch Microsoft Edge,OPEN_APP,OPEN_APP,edge,edge,True,True
+llm-v4,jot down the meeting moved to 3 pm,CREATE_NOTE,CREATE_NOTE,the meeting moved to 3 pm,the meeting moved to 3 pm,True,
 llm-v4,Google pydantic models tutorial,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,
+llm-v4,Delete all my files,UNKNOWN,UNKNOWN,,,True,
+llm-v4,Short summary of the clipboard,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v4,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+llm-v4,LAUNCH VSCODE,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+llm-v4,do you know when my presentation is,RECALL_MEMORY,RECALL_MEMORY,,presentation,True,
+llm-v4,jot down fix the login bug,CREATE_NOTE,CREATE_NOTE,fix the login bug,fix the login bug,True,
+llm-v4,explain briefly what I copied,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v4,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
+llm-v4,um remember that my project presentation is on Friday,SAVE_MEMORY,SAVE_MEMORY,my project presentation is on Friday,my project presentation is on Friday,True,
+llm-v4,open calculator,OPEN_APP,OPEN_APP,calculator,calculator,True,True
+llm-v4,How are you today?,UNKNOWN,UNKNOWN,,,True,
+llm-v4,Search Google for what is a large language model.,WEB_SEARCH,WEB_SEARCH,what is a large language model,what is a large language model,True,
+llm-v4,tell me what you remember,RECALL_MEMORY,RECALL_MEMORY,,what you remember,True,
+llm-v4,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+llm-v4,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
+llm-v4,Remember that my meeting is at ten.,SAVE_MEMORY,SAVE_MEMORY,my meeting is at ten,my meeting is at ten,True,
+llm-v4,install Photoshop,UNKNOWN,UNKNOWN,,,True,
+llm-v4,make a summary of the copied text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v4,find information about best laptops for students 2026,WEB_SEARCH,ASK_DOCUMENTS,best laptops for students 2026,find information about best laptops for students 2026,False,
+llm-v4,I need to code.,OPEN_APP,UNKNOWN,vscode,,False,False
+llm-v4,Take me to downloaded files,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
+llm-v4,remind me what I told you about the router,RECALL_MEMORY,RECALL_MEMORY,,router,True,
+llm-v4,Can you open docs?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+llm-v4,write down pay the electricity bill,CREATE_NOTE,CREATE_NOTE,pay the electricity bill,pay the electricity bill,True,
+llm-v4,Look up python list comprehension,WEB_SEARCH,WEB_SEARCH,python list comprehension,python list comprehension,True,
