@@ -8,5 +8,10 @@ backend/voicepilot.db
 # Node
 frontend/node_modules/
 frontend/dist/
-# raw audio can get large; remove this line if you want to commit recordings
+# raw audio 
 data/raw/audio/*.webm
+
+# VoicePilot agent/RAG
+backend/rag_index.json
+# personal documents (CV etc.) stay on my computer only
+documents/personal/
