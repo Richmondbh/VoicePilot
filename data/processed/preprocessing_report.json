@@ -1,29 +1,29 @@
 {
-  "1_raw_rows": 234,
+  "1_raw_rows": 259,
   "1_raw_rows_by_source": {
     "typed": 114,
     "whisper_transcript": 64,
     "paraphrase": 52,
-    "recording": 4
+    "recording": 29
   },
-  "2_after_removing_empty_noise": 222,
+  "2_after_removing_empty_noise": 250,
   "3_unlabelled_dropped": 1,
-  "4_invalid_target_dropped": 2,
+  "4_invalid_target_dropped": 26,
   "5_duplicates_removed": 18,
-  "6_clean_rows": 201,
+  "6_clean_rows": 205,
   "6_rows_per_label": {
-    "OPEN_APP": 42,
+    "OPEN_APP": 44,
     "WEB_SEARCH": 32,
-    "OPEN_FOLDER": 25,
+    "OPEN_FOLDER": 26,
     "SAVE_MEMORY": 24,
     "CREATE_NOTE": 24,
     "UNKNOWN": 20,
     "RECALL_MEMORY": 18,
-    "SUMMARIZE_CLIPBOARD": 16
+    "SUMMARIZE_CLIPBOARD": 17
   },
   "7_split": {
-    "train": 140,
-    "val": 30,
+    "train": 143,
+    "val": 31,
     "test": 31
   }
 }

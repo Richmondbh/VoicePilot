@@ -1,0 +1,156 @@
+method,text,label,predicted,expected_target,predicted_target,intent_correct,target_correct
+rules,jot down the meeting moved to 3 pm,CREATE_NOTE,CREATE_NOTE,the meeting moved to 3 pm,the meeting moved to 3 pm,True,
+rules,I need explorer,OPEN_APP,OPEN_APP,explorer,explorer,True,True
+rules,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+rules,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+rules,Open VS Code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+rules,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,read chapter 4 of the course book,True,
+rules,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,weather in Östersund,True,
+rules,format my hard drive,UNKNOWN,UNKNOWN,,,True,
+rules,play the next episode,UNKNOWN,UNKNOWN,,,True,
+rules,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+rules,I need to code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+rules,um summarize my clipboard text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+rules,take a note that practice the demo video,CREATE_NOTE,CREATE_NOTE,practice the demo video,practice the demo video,True,
+rules,um remember that my favourite editor is VS Code,SAVE_MEMORY,SAVE_MEMORY,my favourite editor is VS Code,my favourite editor is VS Code,True,
+rules,what time is my meeting,RECALL_MEMORY,RECALL_MEMORY,,,True,
+rules,Open the browser.,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+rules,Don't forget that Anna's birthday is in March,SAVE_MEMORY,SAVE_MEMORY,Anna's birthday is in March,Anna's birthday is in March,True,
+rules,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
+rules,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
+rules,Take me to downloaded files,OPEN_FOLDER,OPEN_APP,downloads,explorer,False,False
+rules,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
+rules,Don't forget that my locker code is in the blue notebook,SAVE_MEMORY,SAVE_MEMORY,my locker code is in the blue notebook,my locker code is in the blue notebook,True,
+rules,Delete all my files,UNKNOWN,UNKNOWN,,,True,
+rules,clipboard summary please,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+rules,find information about train times Östersund to Stockholm,WEB_SEARCH,WEB_SEARCH,train times Östersund to Stockholm,train times Östersund to Stockholm,True,
+rules,Can you start Chrome?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+rules,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
+rules,Do you remember when the exam is?,RECALL_MEMORY,RECALL_MEMORY,,,True,
+rules,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+rules,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,email the teacher about the deadline,True,
+rules,Can you search pydantic models tutorial?,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,
+classifier,jot down the meeting moved to 3 pm,CREATE_NOTE,CREATE_NOTE,the meeting moved to 3 pm,the meeting moved to 3 pm,True,
+classifier,I need explorer,OPEN_APP,OPEN_APP,explorer,explorer,True,True
+classifier,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+classifier,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+classifier,Open VS Code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+classifier,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,read chapter 4 of the course book,True,
+classifier,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,weather in Östersund,True,
+classifier,format my hard drive,UNKNOWN,OPEN_FOLDER,,,False,
+classifier,play the next episode,UNKNOWN,OPEN_APP,,,False,
+classifier,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+classifier,I need to code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+classifier,um summarize my clipboard text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+classifier,take a note that practice the demo video,CREATE_NOTE,CREATE_NOTE,practice the demo video,practice the demo video,True,
+classifier,um remember that my favourite editor is VS Code,SAVE_MEMORY,SAVE_MEMORY,my favourite editor is VS Code,my favourite editor is VS Code,True,
+classifier,what time is my meeting,RECALL_MEMORY,RECALL_MEMORY,,,True,
+classifier,Open the browser.,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+classifier,Don't forget that Anna's birthday is in March,SAVE_MEMORY,SAVE_MEMORY,Anna's birthday is in March,Anna's birthday is in March,True,
+classifier,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
+classifier,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
+classifier,Take me to downloaded files,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
+classifier,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
+classifier,Don't forget that my locker code is in the blue notebook,SAVE_MEMORY,SAVE_MEMORY,my locker code is in the blue notebook,my locker code is in the blue notebook,True,
+classifier,Delete all my files,UNKNOWN,OPEN_FOLDER,,,False,
+classifier,clipboard summary please,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+classifier,find information about train times Östersund to Stockholm,WEB_SEARCH,WEB_SEARCH,train times Östersund to Stockholm,train times Östersund to Stockholm,True,
+classifier,Can you start Chrome?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+classifier,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
+classifier,Do you remember when the exam is?,RECALL_MEMORY,RECALL_MEMORY,,,True,
+classifier,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+classifier,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,email the teacher about the deadline,True,
+classifier,Can you search pydantic models tutorial?,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,
+llm-v1,jot down the meeting moved to 3 pm,CREATE_NOTE,CREATE_NOTE,the meeting moved to 3 pm,Meeting moved to 3 pm,True,
+llm-v1,I need explorer,OPEN_APP,OPEN_FOLDER,explorer,explorer,False,True
+llm-v1,um open VSCode,OPEN_APP,OPEN_FOLDER,vscode,VSCode,False,True
+llm-v1,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v1,Open VS Code.,OPEN_APP,OPEN_APP,vscode,VS Code,True,True
+llm-v1,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,chapter 4 of the course book,True,
+llm-v1,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,Östersund weather,True,
+llm-v1,format my hard drive,UNKNOWN,UNKNOWN,,format hard drive,True,
+llm-v1,play the next episode,UNKNOWN,OPEN_APP,,media player,False,
+llm-v1,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
+llm-v1,I need to code.,OPEN_APP,OPEN_APP,vscode,CODE_EDITOR,True,True
+llm-v1,um summarize my clipboard text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,clipboard_text,True,
+llm-v1,take a note that practice the demo video,CREATE_NOTE,CREATE_NOTE,practice the demo video,Practice the demo video,True,
+llm-v1,um remember that my favourite editor is VS Code,SAVE_MEMORY,RECALL_MEMORY,my favourite editor is VS Code,VS Code,False,
+llm-v1,what time is my meeting,RECALL_MEMORY,WEB_SEARCH,,meeting time,False,
+llm-v1,Open the browser.,OPEN_APP,OPEN_APP,chrome,browser,True,True
+llm-v1,Don't forget that Anna's birthday is in March,SAVE_MEMORY,RECALL_MEMORY,Anna's birthday is in March,Anna's birthday in March,False,
+llm-v1,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,https://www.google.com/search?q=React+TypeScript+microphone+examples,True,
+llm-v1,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,UNKNOWN,my wifi router is in the hallway,RECALL_MEMORY,False,
+llm-v1,Take me to downloaded files,OPEN_FOLDER,OPEN_FOLDER,downloads,/Downloads,True,True
+llm-v1,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
+llm-v1,Don't forget that my locker code is in the blue notebook,SAVE_MEMORY,RECALL_MEMORY,my locker code is in the blue notebook,LOCKER_CODE,False,
+llm-v1,Delete all my files,UNKNOWN,UNKNOWN,,DELETE_ALL_FILES,True,
+llm-v1,clipboard summary please,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,clipboard,True,
+llm-v1,find information about train times Östersund to Stockholm,WEB_SEARCH,WEB_SEARCH,train times Östersund to Stockholm,train times Östersund to Stockholm,True,
+llm-v1,Can you start Chrome?,OPEN_APP,OPEN_APP,chrome,Chrome,True,True
+llm-v1,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
+llm-v1,Do you remember when the exam is?,RECALL_MEMORY,RECALL_MEMORY,,exam date,True,
+llm-v1,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
+llm-v1,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,email the teacher about the deadline,True,
+llm-v1,Can you search pydantic models tutorial?,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,
+llm-v2,jot down the meeting moved to 3 pm,CREATE_NOTE,SAVE_MEMORY,the meeting moved to 3 pm,the meeting was moved to 3 pm,False,
+llm-v2,I need explorer,OPEN_APP,OPEN_APP,explorer,explorer,True,True
+llm-v2,um open VSCode,OPEN_APP,OPEN_APP,vscode,VSCode,True,True
+llm-v2,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v2,Open VS Code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+llm-v2,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,read chapter 4 of the course book,True,
+llm-v2,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,weather in Östersund,True,
+llm-v2,format my hard drive,UNKNOWN,UNKNOWN,,format hard drive,True,
+llm-v2,play the next episode,UNKNOWN,UNKNOWN,,spotify,True,
+llm-v2,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
+llm-v2,I need to code.,OPEN_APP,UNKNOWN,vscode,code,False,True
+llm-v2,um summarize my clipboard text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v2,take a note that practice the demo video,CREATE_NOTE,CREATE_NOTE,practice the demo video,practice the demo video,True,
+llm-v2,um remember that my favourite editor is VS Code,SAVE_MEMORY,SAVE_MEMORY,my favourite editor is VS Code,my favourite editor is VS Code,True,
+llm-v2,what time is my meeting,RECALL_MEMORY,UNKNOWN,,my meeting time,False,
+llm-v2,Open the browser.,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v2,Don't forget that Anna's birthday is in March,SAVE_MEMORY,SAVE_MEMORY,Anna's birthday is in March,Anna's birthday is in March,True,
+llm-v2,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
+llm-v2,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
+llm-v2,Take me to downloaded files,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
+llm-v2,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
+llm-v2,Don't forget that my locker code is in the blue notebook,SAVE_MEMORY,SAVE_MEMORY,my locker code is in the blue notebook,my locker code is in the blue notebook,True,
+llm-v2,Delete all my files,UNKNOWN,UNKNOWN,,Delete all files in the 'Documents' folder,True,
+llm-v2,clipboard summary please,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v2,find information about train times Östersund to Stockholm,WEB_SEARCH,WEB_SEARCH,train times Östersund to Stockholm,train times Östersund to Stockholm,True,
+llm-v2,Can you start Chrome?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v2,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
+llm-v2,Do you remember when the exam is?,RECALL_MEMORY,RECALL_MEMORY,,exam,True,
+llm-v2,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,Documents,True,True
+llm-v2,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,email the teacher about the deadline,True,
+llm-v2,Can you search pydantic models tutorial?,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,
+llm-v3,jot down the meeting moved to 3 pm,CREATE_NOTE,CREATE_NOTE,the meeting moved to 3 pm,the meeting moved to 3 pm,True,
+llm-v3,I need explorer,OPEN_APP,OPEN_APP,explorer,explorer,True,True
+llm-v3,um open VSCode,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+llm-v3,Could you open crome for me?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v3,Open VS Code.,OPEN_APP,OPEN_APP,vscode,vscode,True,True
+llm-v3,new note read chapter 4 of the course book,CREATE_NOTE,CREATE_NOTE,read chapter 4 of the course book,read chapter 4 of the course book,True,
+llm-v3,um look up weather in Östersund please,WEB_SEARCH,WEB_SEARCH,weather in Östersund,weather Östersund,True,
+llm-v3,format my hard drive,UNKNOWN,UNKNOWN,,,True,
+llm-v3,play the next episode,UNKNOWN,UNKNOWN,,,True,
+llm-v3,Take me to Documents,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+llm-v3,I need to code.,OPEN_APP,UNKNOWN,vscode,,False,False
+llm-v3,um summarize my clipboard text,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v3,take a note that practice the demo video,CREATE_NOTE,CREATE_NOTE,practice the demo video,I need to practice the demo video,True,
+llm-v3,um remember that my favourite editor is VS Code,SAVE_MEMORY,SAVE_MEMORY,my favourite editor is VS Code,my favourite editor is VS Code,True,
+llm-v3,what time is my meeting,RECALL_MEMORY,RECALL_MEMORY,,meeting,True,
+llm-v3,Open the browser.,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v3,Don't forget that Anna's birthday is in March,SAVE_MEMORY,SAVE_MEMORY,Anna's birthday is in March,Anna's birthday is in March,True,
+llm-v3,Search Google for React TypeScript microphone examples.,WEB_SEARCH,WEB_SEARCH,React TypeScript microphone examples,React TypeScript microphone examples,True,
+llm-v3,Don't forget that my wifi router is in the hallway,SAVE_MEMORY,SAVE_MEMORY,my wifi router is in the hallway,my wifi router is in the hallway,True,
+llm-v3,Take me to downloaded files,OPEN_FOLDER,OPEN_FOLDER,downloads,downloads,True,True
+llm-v3,find information about FastAPI tutorials,WEB_SEARCH,WEB_SEARCH,FastAPI tutorials,FastAPI tutorials,True,
+llm-v3,Don't forget that my locker code is in the blue notebook,SAVE_MEMORY,SAVE_MEMORY,my locker code is in the blue notebook,my locker code is in the blue notebook,True,
+llm-v3,Delete all my files,UNKNOWN,UNKNOWN,,,True,
+llm-v3,clipboard summary please,SUMMARIZE_CLIPBOARD,SUMMARIZE_CLIPBOARD,,,True,
+llm-v3,find information about train times Östersund to Stockholm,WEB_SEARCH,WEB_SEARCH,train times Östersund to Stockholm,train times Östersund to Stockholm,True,
+llm-v3,Can you start Chrome?,OPEN_APP,OPEN_APP,chrome,chrome,True,True
+llm-v3,uh show music folder,OPEN_FOLDER,OPEN_FOLDER,music,music,True,True
+llm-v3,Do you remember when the exam is?,RECALL_MEMORY,RECALL_MEMORY,,exam,True,
+llm-v3,Can you open Documents?,OPEN_FOLDER,OPEN_FOLDER,documents,documents,True,True
+llm-v3,new note email the teacher about the deadline,CREATE_NOTE,CREATE_NOTE,email the teacher about the deadline,I need to email the teacher about the deadline,True,
+llm-v3,Can you search pydantic models tutorial?,WEB_SEARCH,WEB_SEARCH,pydantic models tutorial,pydantic models tutorial,True,

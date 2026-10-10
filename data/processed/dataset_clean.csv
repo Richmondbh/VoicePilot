@@ -200,3 +200,7 @@ id,source,text,clean_text,label,target,audio_file
 228,typed,Search Google for what is a large language model.,search google for what is a large language model,WEB_SEARCH,what is a large language model,
 229,typed,Summarize what is currently in my clipboard.,summarize what is currently in my clipboard,SUMMARIZE_CLIPBOARD,,
 230,typed,what have I asked you to remember,what have i asked you to remember,RECALL_MEMORY,,
+923aacd76b,recording,Open file explorer.,open file explorer,OPEN_APP,explorer,audio/923aacd76b.webm
+eee79e77e0,recording,Open my downloads.,open my downloads,OPEN_FOLDER,downloads,audio/eee79e77e0.webm
+98542e8748,recording,summarize my clip board,summarize my clip board,SUMMARIZE_CLIPBOARD,,audio/98542e8748.webm
+c93b9d3cb7,recording,Open Microsoft Edge,open microsoft edge,OPEN_APP,edge,audio/c93b9d3cb7.webm
