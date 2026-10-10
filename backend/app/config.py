@@ -44,7 +44,7 @@ LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama").lower()
 if LLM_PROVIDER not in PROVIDERS:
     LLM_PROVIDER = "none"
 LLM_MODEL = os.getenv("LLM_MODEL") or PROVIDERS[LLM_PROVIDER]["model"]
-PROMPT_VERSION = os.getenv("PROMPT_VERSION", "v3")
+PROMPT_VERSION = os.getenv("PROMPT_VERSION", "v4")
 HISTORY_TURNS = int(os.getenv("HISTORY_TURNS", "5"))
 
 # ------------------------------------------------------------- speech ------
@@ -61,3 +61,17 @@ NOTES_DIR = Path(os.getenv("NOTES_DIR", str(Path.home() / "VoicePilot Notes")))
 DB_PATH = Path(os.getenv("DB_PATH", str(BACKEND_DIR / "voicepilot.db")))
 CLASSIFIER_PATH = BACKEND_DIR / "models" / "intent_classifier.joblib"
 RAW_DATA_DIR = PROJECT_DIR / "data" / "raw"
+
+# ------------------------------------------------------ agent + RAG ------
+# The agent handles requests that need several steps or the user's documents.
+AGENT_ENABLED = os.getenv("AGENT_ENABLED", "1") == "1"
+AGENT_MAX_STEPS = int(os.getenv("AGENT_MAX_STEPS", "4"))
+AGENT_MAX_ACTIONS = int(os.getenv("AGENT_MAX_ACTIONS", "2"))  # tools that change something
+
+# Read-only document search (RAG). Put .pdf / .docx / .txt / .md files in DOCUMENTS_DIR.
+DOCUMENTS_DIR = Path(os.getenv("DOCUMENTS_DIR", str(PROJECT_DIR / "documents")))
+RAG_INDEX_PATH = Path(os.getenv("RAG_INDEX_PATH", str(BACKEND_DIR / "rag_index.json")))
+# auto = Ollama embeddings if available, otherwise TF-IDF | ollama | tfidf
+RAG_BACKEND = os.getenv("RAG_BACKEND", "auto").lower()
+EMBED_MODEL = os.getenv("EMBED_MODEL", "nomic-embed-text")
+RAG_TOP_K = int(os.getenv("RAG_TOP_K", "4"))

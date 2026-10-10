@@ -19,7 +19,8 @@ from .fallback import understand as offline_understand
 from .models import IntentResult
 
 INTENTS = ["OPEN_APP", "OPEN_FOLDER", "WEB_SEARCH", "CREATE_NOTE",
-           "SAVE_MEMORY", "RECALL_MEMORY", "SUMMARIZE_CLIPBOARD", "UNKNOWN"]
+           "SAVE_MEMORY", "RECALL_MEMORY", "SUMMARIZE_CLIPBOARD", "UNKNOWN",
+           "ASK_DOCUMENTS", "MULTI_STEP"]  # the last two are routed to the agent (v4)
 
 # =============================================================== PROMPTS ===
 # v1: the naive first attempt.
@@ -109,7 +110,31 @@ Command: "delete everything in my documents"
 Command: "{text}"
 """
 
-PROMPTS = {"v1": PROMPT_V1, "v2": PROMPT_V2, "v3": PROMPT_V3}
+# v4: v3 + two routing intents for the agent. Simple commands keep the fast path;
+#     questions about the user's documents and requests needing several actions
+#     are handed to agent.py.
+PROMPT_V4 = PROMPT_V3.replace(
+    "- UNKNOWN: small talk,",
+    "- ASK_DOCUMENTS: a question that must be answered from the user's documents (their CV, course\n"
+    "  documents, project plan, notes). target = the question.\n"
+    "- MULTI_STEP: one request that needs two or more of the actions above, or a document lookup\n"
+    "  followed by an action (\"find X in my CV and save it as a note\"). target = the full request.\n"
+    "- UNKNOWN: small talk,",
+).replace(
+    "4. Questions (\"what did I...\", \"when is my...\") are RECALL_MEMORY, statements with \"remember\" are SAVE_MEMORY.",
+    "4. Questions (\"what did I...\", \"when is my...\") are RECALL_MEMORY, statements with \"remember\" are SAVE_MEMORY.\n"
+    "   Questions about facts in documents (CV, experience, skills, course rules, project plan) are ASK_DOCUMENTS.\n"
+    "   If the request contains two actions joined by \"and\" / \"then\", use MULTI_STEP.",
+).replace(
+    'Command: "delete everything in my documents"',
+    'Command: "what certifications do I have according to my CV"\n'
+    '{{"intent": "ASK_DOCUMENTS", "target": "what certifications do I have according to my CV", "reply": "Let me check your documents."}}\n'
+    'Command: "search for fastapi tutorials and make a note to watch them tonight"\n'
+    '{{"intent": "MULTI_STEP", "target": "search for fastapi tutorials and make a note to watch them tonight", "reply": "On it."}}\n'
+    'Command: "delete everything in my documents"',
+)
+
+PROMPTS = {"v1": PROMPT_V1, "v2": PROMPT_V2, "v3": PROMPT_V3, "v4": PROMPT_V4}
 
 RECALL_PROMPT = """You are VoicePilot. Answer the user's question using ONLY the saved memories below.
 If the answer is not in the memories, say you don't have that saved. Answer in one or two short sentences,
