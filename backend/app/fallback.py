@@ -89,11 +89,40 @@ def extract_target(intent: str, text: str) -> str | None:
     return None
 
 
+# ---------------------------------------------------------------- agent routing (offline) ---
+DOC_QUESTION = re.compile(
+    r"\b(according to|my cv|cv|resume|my experience|my skills|project (plan|proposal|information|description)"
+    r"|assignment|grading|grade vg|grade g|requirements for|course (rules|requirements|document))\b")
+ACTION_GROUPS = {
+    "open": r"\b(open|launch|start|show)\b",
+    "search": r"\b(search|google|look up|lookup)\b",
+    "note": r"\b(note|write down|jot)\b",
+    "memory": r"\b(remember|keep in mind)\b",
+}
+
+
+def route(text: str) -> str | None:
+    """Rule-based detection of the two agent intents (used when no LLM is available)."""
+    t = clean_text(text)
+    if DANGEROUS.search(t):
+        return None
+    groups = [g for g, pattern in ACTION_GROUPS.items() if re.search(pattern, t)]
+    doc = bool(DOC_QUESTION.search(t)) and "folder" not in t
+    if re.search(r"\b(and|then)\b", t) and (len(groups) >= 2 or (doc and groups)):
+        return "MULTI_STEP"
+    if doc and not groups:
+        return "ASK_DOCUMENTS"
+    return None
+
+
 def is_dangerous(text: str) -> bool:
     return bool(DANGEROUS.search(clean_text(text)))
 
 
 def understand(text: str) -> IntentResult:
+    routed = route(text)
+    if routed:
+        return IntentResult(intent=routed, target=text.strip(), source="rules")
     clf = _get_classifier()
     if clf is not None:
         intent, source = str(clf.predict([clean_text(text)])[0]), "classifier"
