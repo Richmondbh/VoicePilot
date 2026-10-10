@@ -123,7 +123,9 @@ PROMPT_V4 = PROMPT_V3.replace(
 ).replace(
     "4. Questions (\"what did I...\", \"when is my...\") are RECALL_MEMORY, statements with \"remember\" are SAVE_MEMORY.",
     "4. Questions (\"what did I...\", \"when is my...\") are RECALL_MEMORY, statements with \"remember\" are SAVE_MEMORY.\n"
-    "   Questions about facts in documents (CV, experience, skills, course rules, project plan) are ASK_DOCUMENTS.\n"
+    "   RECALL_MEMORY is ONLY for things the user earlier asked you to remember.\n"
+    "   Questions about the user's CV, profile, certificates, skills, experience, course rules or project plan\n"
+    "   are ASK_DOCUMENTS. SAVE_MEMORY only when the user says remember / keep in mind / don't forget.\n"
     "   If the request contains two actions joined by \"and\" / \"then\", use MULTI_STEP.",
 ).replace(
     'Command: "delete everything in my documents"',

@@ -15,6 +15,7 @@ FastAPI references:
 One has to Run with:  uvicorn app.main:app --reload  
 """
 import csv
+import re
 import time
 import uuid
 from contextlib import asynccontextmanager
@@ -59,6 +60,11 @@ def run_pipeline(text: str) -> CommandResponse:
     # Safety net: "delete my downloads" must never become "open downloads".
     if fallback.is_dangerous(text) and intent in {"OPEN_APP", "OPEN_FOLDER"}:
         intent, target = "UNKNOWN", None
+    # Routing guard: questions about the CV/profile/course documents belong to the
+    # document search, even if the model guessed RECALL_MEMORY or UNKNOWN.
+    if (intent in {"RECALL_MEMORY", "UNKNOWN"} and fallback.DOC_QUESTION.search(fallback.clean_text(text))
+            and not fallback.MEMORY_QUESTION.search(text.lower()) and not fallback.is_dangerous(text)):
+        intent = "ASK_DOCUMENTS"
 
     # Requests that need documents or several actions go to the bounded agent.
     if intent in AGENT_INTENTS and text:
@@ -74,6 +80,12 @@ def run_pipeline(text: str) -> CommandResponse:
                 else "Sorry, I can't help with that. Try opening an app, searching, or saving a note."
             )
         intent, target = actions.validate(intent, target)
+        # Saving something needs the user's own words ("remember", "note"), so a
+        # misheard sentence is never stored by mistake (same rule as the agent).
+        tool = {"SAVE_MEMORY": "save_memory", "CREATE_NOTE": "create_note"}.get(intent)
+        if tool and not re.search(agent.USER_PERMISSION[tool], text.lower()):
+            word = "remember that" if tool == "save_memory" else "make a note that"
+            raise actions.ActionRejected(f"I wasn't sure you wanted me to save that. Say \"{word} …\" to save it.")
 
         if intent == "RECALL_MEMORY":
             message = assistant.answer_from_memory(
