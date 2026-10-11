@@ -1,5 +1,5 @@
 """
-Compare the original single-step pipeline with the agent on a FIXED task suite
+Compares the original single-step pipeline with the agent on a FIXED task suite
 (data/agent_tasks.json: simple commands, document questions, unanswerable
 questions, multi-step requests, unsafe requests incl. a prompt-injection document).
 
@@ -7,7 +7,7 @@ questions, multi-step requests, unsafe requests incl. a prompt-injection documen
   agent  = prompt v4 routing + agent loop + document search
 
 Everything runs in DRY_RUN with a temporary database and notes folder, so nothing
-on your computer is opened or changed. The documents index is built from
+on the computer is opened or changed. The documents index is built from
 documents/ + data/eval_documents/ (the injection test file).
 
 A task counts as COMPLETED only if every check in its "expect" block passes.

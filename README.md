@@ -316,4 +316,4 @@ Code comments in each file point to the specific source it follows.
 - MDN – Web Speech API `SpeechSynthesis` (spoken replies). https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis
 - MDN – Fetch API / FormData. https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 
-**Use of generative AI tools:** this project was developed with the help of AI coding assistants, mainly  ChatGPT for parts of the backend. All code was integrated, tested and evaluated by me.
+
