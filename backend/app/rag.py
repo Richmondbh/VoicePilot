@@ -1,5 +1,5 @@
 """
-Read-only document search (Retrieval-Augmented Generation, the "R" part).
+ Read-only document search (Retrieval-Augmented Generation, the "R" part).
 
     documents/ (.pdf .docx .txt .md)
         -> extract text (per PDF page, so answers can cite a page)

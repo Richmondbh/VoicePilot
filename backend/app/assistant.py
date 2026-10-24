@@ -1,5 +1,5 @@
 """
-LLM interaction: prompt building (three refined versions), intent extraction
+ LLM interaction: prompt building (three refined versions), intent extraction
 and response generation.
 
 The `openai` Python SDK is used for every provider because Ollama, Groq and

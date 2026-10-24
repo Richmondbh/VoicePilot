@@ -1,5 +1,5 @@
 """
-Conversation history + long-term "remember this" memory, stored in SQLite.
+ Conversation history + long-term "remember this" memory, stored in SQLite.
 Based on the standard-library sqlite3 tutorial:
 https://docs.python.org/3/library/sqlite3.html#tutorial
 """

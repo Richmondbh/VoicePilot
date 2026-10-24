@@ -1,5 +1,5 @@
 """
-Compares the original single-step pipeline with the agent on a FIXED task suite
+This compares the original single-step pipeline with the agent on a FIXED task suite
 (data/agent_tasks.json: simple commands, document questions, unanswerable
 questions, multi-step requests, unsafe requests incl. a prompt-injection document).
 

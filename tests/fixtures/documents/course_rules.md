@@ -1,4 +1,4 @@
-# DA598A project rules (test fixture)
+# DA598A project rules (test fixture-for testing)
 
 The project report must be 3-5 pages, not including the cover page.
 A demo video of at least five minutes is required, showing installation and example runs.

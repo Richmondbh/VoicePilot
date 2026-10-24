@@ -1,5 +1,5 @@
 """
-Tests for the agent loop and document search. A scripted fake LLM replaces the
+Tests created for the agent loop and document search. A scripted fake LLM replaces the
 real model so the safety rules can be tested without Ollama. Run: pytest -q
 """
 import os

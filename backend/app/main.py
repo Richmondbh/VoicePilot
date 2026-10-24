@@ -1,5 +1,5 @@
 """
-VoicePilot FastAPI application.
+ VoicePilot FastAPI application.
 
 Pipeline:  audio -> speech.py (Whisper) -> assistant.py (LLM intent)
            -> actions.validate (allowlist) -> actions.execute -> memory.py (log)

@@ -1,4 +1,5 @@
 """
+Resources:
 Based on: https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
           https://scikit-learn.org/stable/modules/compose.html#featureunion-composite-feature-spaces
 """

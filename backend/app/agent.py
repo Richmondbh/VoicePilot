@@ -1,5 +1,5 @@
 """
-Bounded agent loop (the "agentic" part of VoicePilot).
+ Bounded agent loop (the "agentic" part of VoicePilot).
 
 Used only for requests the router (prompt v4) labels ASK_DOCUMENTS or
 MULTI_STEP. Simple commands keep the fast single-step path in main.py.

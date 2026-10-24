@@ -1,5 +1,5 @@
 """
-Offline intent understanding, used when no LLM is configured or the LLM fails.
+ Offline intent understanding, used when no LLM is configured or the LLM fails.
 
 1. If a trained classifier exists (scripts/train_classifier.py creates it), it
    predicts the intent: TF-IDF features + Logistic Regression, following the

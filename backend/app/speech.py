@@ -1,5 +1,5 @@
 """
-Speech-to-text with faster-whisper (a fast re-implementation of OpenAI Whisper).
+ Speech-to-text with faster-whisper (a fast re-implementation of OpenAI Whisper).
 Runs locally on the CPU - free, no API key.
 
 Usage pattern taken from the faster-whisper README:
