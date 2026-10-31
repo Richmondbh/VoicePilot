@@ -1,5 +1,5 @@
 @echo off
-REM One-time setup for the VoicePilot on Windows 
+REM One-time setup for the VoicePilot on Windows. 
 cd /d %~dp0
 python -m venv .venv
 call .venv\Scripts\activate

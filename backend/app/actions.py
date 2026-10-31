@@ -1,5 +1,5 @@
 """
- Action validation + execution.
+Action validation + execution.
 
 SAFETY DESIGN: the LLM only *suggests* an intent and a target. This module
 decides whether that suggestion is allowed. Applications and folders must be

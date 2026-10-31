@@ -1,5 +1,5 @@
 """
- Pydantic models (request/response shapes and the structured intent).
+Pydantic models (request/response shapes and the structured intent).
 Pydantic docs: https://docs.pydantic.dev/latest/concepts/models/
 """
 from enum import Enum

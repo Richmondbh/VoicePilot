@@ -1,5 +1,5 @@
 """
- Central configuration for VoicePilot.
+Central configuration for VoicePilot.
 
 All settings are read from environment variables (or a `.env` file in the
 backend folder) so nothing secret is hard-coded.

@@ -1,6 +1,6 @@
 # VoicePilot – AI-powered voice assistant for desktop task automation
 
-A voice assistant that turns spoken requests into controlled desktop actions and answers questions from my (your) own documents. Built as project work for **DA598A Introduction to Generative AI** by Richmond Boakye.
+A voice assistant that turns spoken requests into controlled desktop actions and answers questions from my (your) own documents. Built as project work for **DA598A Introduction to Generative AI** by  Richmond Boakye.
 
 VoicePilot transcribes speech with faster-whisper and uses an LLM to interpret the request. Simple commands run straight away after the proposed action is checked against an allowlist. Requests that need several steps or your documents go to a bounded agent. The AI suggests, and Python decides what is allowed to run.
 
